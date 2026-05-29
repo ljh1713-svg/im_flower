@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私は花 - お飲み物</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .menu-divider { text-align: center; margin: 40px 0; position: relative; }
+        .menu-divider h2 { font-size: 2.2em; display: inline-block; background-color: var(--bg-base); padding: 0 30px; position: relative; z-index: 2; letter-spacing: 4px; }
+        .menu-divider::before { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background-color: var(--border-color); z-index: 1; }
+        .menu-divider p { font-size: 0.85em; color: var(--accent-green); margin: 5px 0 0; letter-spacing: 3px; font-weight: 500; }
+
+        .category-title { text-align: center; font-size: 1.8em; margin: 40px 0 30px; letter-spacing: 2px; border-bottom: 2px solid var(--accent-green); display: inline-block; padding-bottom: 5px; }
+        .category-wrapper { text-align: center; }
+
+        /* 텍스트 전용 메뉴 리스트 스타일 */
+        .text-menu-list {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .text-menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        .text-menu-item:hover {
+            border-bottom: 1px dashed var(--accent-green);
+        }
+        .text-menu-info {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .text-menu-name-ja { font-size: 1.2em; font-family: 'Noto Serif JP', serif; color: var(--text-main); }
+        .text-menu-price { font-size: 1.2em; font-family: 'Noto Sans JP', sans-serif; font-weight: 500; color: var(--text-main); }
+        .text-menu-price::after { content: ' 円'; font-size: 0.7em; color: var(--text-sub); }
+
+        .footer { margin-top: 60px; }
+    </style>
+</head>
+<body>
+
+    <!-- 🧭 네비게이션 바 -->
+    <nav class="navbar">
+        <div class="nav-top">
+            <button class="ai-btn" onclick="openAiModal()">🤖 AI アシスタント</button>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <div id="business-status" class="status-badge">状態確認中...</div>
+                <button class="parking-btn" onclick="openParkingModal()">P</button>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="about.html">お店の紹介</a>
+            <a href="index.html">お食事</a>
+            <a href="drink.html" class="active">お飲み物</a>
+            <a href="javascript:void(0);" onclick="openModal()">アクセス</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="menu-divider" style="margin-top: 20px;">
+            <h2>お飲み物</h2>
+            <p>DRINK & WINE</p>
+        </div>
+
+        <!-- ================= 카테고리 1: Drink (주류) ================= -->
+        <div class="category-wrapper">
+            <h2 class="category-title">Drink</h2>
+        </div>
+        
+        <div class="text-menu-list">
+            <div class="text-menu-item">
+                <div class="text-menu-info">
+                    <span class="text-menu-name-ja">ワイン(グラス) 赤/白</span>
+                </div>
+                <div class="text-menu-price">700</div>
+            </div>
+            <div class="text-menu-item">
+                <div class="text-menu-info">
+                    <span class="text-menu-name-ja">ハイボール</span>
+                </div>
+                <div class="text-menu-price">700</div>
+            </div>
+            <div class="text-menu-item">
+                <div class="text-menu-info">
+                    <span class="text-menu-name-ja">瓶ビール</span>
+                </div>
+                <div class="text-menu-price">700</div>
+            </div>
+            <div class="text-menu-item">
+                <div class="text-menu-info">
+                    <span class="text-menu-name-ja">焼酎(麦/芋)</span>
+                </div>
+                <div class="text-menu-price">700</div>
+            </div>
+            <div class="text-menu-item">
+                <div class="text-menu-info">
+                    <span class="text-menu-name-ja">ノンアルコール(ボトル)</span>
+                </div>
+                <div class="text-menu-price">700</div>
+            </div>
+            <div class="text-menu-item">
+                <div class="text-menu-info">
+                    <span class="text-menu-name-ja">チャミスル</span>
+                </div>
+                <div class="text-menu-price">1,500</div>
+            </div>
+            <div class="text-menu-item">
+                <div class="text-menu-info">
+                    <span class="text-menu-name-ja">マッコリ(ボトル)</span>
+                </div>
+                <div class="text-menu-price">1,500</div>
+            </div>
+            <div class="text-menu-item">
+                <div class="text-menu-info">
+                    <span class="text-menu-name-ja">ワイン(ボトル)</span>
+                </div>
+                <div class="text-menu-price">3,500</div>
+            </div>
+        </div>
+
+        <!-- ================= 카테고리 2: Soft Drink (소프트 드링크) ================= -->
+        <div class="category-wrapper">
+            <h2 class="category-title">ソフトドリンク</h2>
+        </div>
+        
+        <div class="text-menu-list">
+            <div class="text-menu-item">
+                <div class="text-menu-info">
+                    <span class="text-menu-name-ja">コーヒー (ICE/HOT)</span>
+                </div>
+                <div class="text-menu-price">550</div>
+            </div>
+            <div class="text-menu-item">
+                <div class="text-menu-info">
+                    <span class="text-menu-name-ja">コーラ</span>
+                </div>
+                <div class="text-menu-price">550</div>
+            </div>
+            <div class="text-menu-item">
+                <div class="text-menu-info">
+                    <span class="text-menu-name-ja">ウーロン茶</span>
+                </div>
+                <div class="text-menu-price">550</div>
+            </div>
+            <div class="text-menu-item">
+                <div class="text-menu-info">
+                    <span class="text-menu-name-ja">レモンティー</span>
+                </div>
+                <div class="text-menu-price">650</div>
+            </div>
+            <div class="text-menu-item">
+                <div class="text-menu-info">
+                    <span class="text-menu-name-ja">紅茶</span>
+                </div>
+                <div class="text-menu-price">650</div>
+            </div>
+            <div class="text-menu-item">
+                <div class="text-menu-info">
+                    <span class="text-menu-name-ja">アップルミント茶</span>
+                </div>
+                <div class="text-menu-price">650</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 私は花. All rights reserved.</p>
+        </div>
+    </div>
+
+    <!-- 🗺️ 모달: 오시는 길 -->
+    <div id="accessModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+                <h3 style="margin-top: 0; color: var(--accent-green);">アクセス</h3>
+            <p style="font-weight: 600; font-size: 1.1em; margin-bottom: 5px; color: var(--text-main);">私は花</p>
+            <p style="color: var(--text-sub); margin-bottom: 15px; font-size: 0.9em;">〒563-0355 大阪府豊能郡能勢町下田１９８−１</p>
+            
+            <iframe class="modal-map" src="https://maps.google.com/maps?q=大阪府豊能郡能勢町下田１９８−１&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+            
+            <a href="https://www.google.com/maps/search/?api=1&query=大阪府豊能郡能勢町下田１９８−１" target="_blank" class="btn-nav">
+                📍 Google Mapsでナビを開始
+            </a>
+        </div>
+    </div>
+
+    <!-- 🤖 모달: AI 비서 -->
+    <div id="aiModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeAiModal()">×</button>
+            <h3 style="margin-top: 0; color: var(--accent-green);">🤖 AI アシスタント</h3>
+                <p style="color: var(--text-sub); font-size: 0.9em; margin-bottom: 10px;">お店について何でも聞いてください！</p>
+            <div class="ai-input-group">
+                <input type="text" placeholder="質問を入力してください..." disabled>
+                    <button onclick="alert('ただいま準備中です。')">送信</button>
+            </div>
+            <p style="color: #F4B400; font-size: 0.85em; margin-top: 20px; font-weight: bold;">※ 現在、AI機能は準備中です。</p>
+        </div>
+    </div>
+
+    <!-- 🅿️ 모달: 주차장 정보 -->
+    <div id="parkingModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeParkingModal()">×</button>
+            <h3 style="margin-top: 0; color: #3B5998;">駐車場のご案内</h3>
+            <p style="font-weight: 600; font-size: 1.1em; margin-bottom: 5px; color: var(--text-main);">店舗の向かい側に駐車場完備</p>
+            
+            <img src="images/parking.jpg" alt="駐車場" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border-color);" onerror="this.src='https://placehold.co/400x250/F5F2EB/2D2926?text=Parking'">
+        </div>
+    </div>
+
+    <script src="common.js" defer></script>
+
+</body>
+</html>

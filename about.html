@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私は花 - お店の紹介</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        /* --- 헤더 및 로고 --- */
+        .header { text-align: center; padding: 30px 0 20px; border-bottom: 1px solid var(--border-color); margin-bottom: 30px; }
+        .logo-wrapper { position: relative; display: inline-block; margin-bottom: 15px; }
+        .logo-img { max-height: 140px; width: auto; display: block; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.05)); }
+        .logo-text-ja { position: absolute; bottom: 0px; left: -10px; font-size: 1.2em; color: #FFFFFF; font-family: 'Noto Serif JP', serif; background-color: var(--accent-green); padding: 2px 8px; border-radius: 4px; letter-spacing: 2px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+        .header-desc { font-size: 1.1em; color: var(--text-sub); margin-top: 15px; letter-spacing: 1px; }
+
+        /* --- 가게 소개 스토리 --- */
+        .story-section { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 50px 40px; margin-bottom: 60px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+        .philosophy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .phil-item h4 { color: var(--text-main); font-size: 1.2em; margin-bottom: 10px; border-bottom: 2px solid var(--accent-green); display: inline-block; padding-bottom: 5px; }
+        .phil-item p { font-size: 0.95em; color: var(--text-sub); }
+        .owner-message { background-color: #F5F2EB; padding: 25px; border-radius: 8px; font-size: 0.95em; text-align: left; border-left: 4px solid var(--accent-green); color: var(--text-main); line-height: 1.8; display: flex; align-items: center; gap: 25px; }
+        .owner-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border-color); flex-shrink: 0; }
+        @media (max-width: 600px) { .owner-message { flex-direction: column; text-align: center; } .owner-message strong { text-align: center; } }
+
+        /* --- 갤러리 --- */
+        .store-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 50px; }
+        .store-gallery img { width: 100%; height: 250px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s ease; }
+        .store-gallery img:hover { transform: scale(1.02); }
+        @media (min-width: 992px) {
+            .store-gallery { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        /* --- 영업시간 인포 --- */
+        .info-section { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 40px; margin-bottom: 60px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+        .info-table { margin: 0 auto; text-align: left; display: inline-block; border-collapse: collapse; }
+        .info-table th { padding: 15px 30px; color: var(--text-main); border-bottom: 1px solid var(--border-color); font-family: 'Noto Serif JP', serif; }
+        .info-table td { padding: 15px 30px; border-bottom: 1px solid var(--border-color); font-weight: 500; }
+        .info-table tr:last-child th, .info-table tr:last-child td { border-bottom: none; }
+        @media (max-width: 600px) {
+            .info-section { padding: 25px 15px; }
+            .info-table th, .info-table td { padding: 12px 10px; font-size: 0.95em; word-break: keep-all; }
+        }
+
+        .footer { margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-top">
+            <button class="ai-btn" onclick="openAiModal()">🤖 AI アシスタント</button>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <div id="business-status" class="status-badge">状態確認中...</div>
+                <button class="parking-btn" onclick="openParkingModal()">P</button>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="about.html" class="active">お店の紹介</a>
+            <a href="index.html">お食事</a>
+            <a href="drink.html">お飲み物</a>
+            <a href="javascript:void(0);" onclick="openModal()">アクセス</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo-wrapper">
+                <img class="logo-img" src="images/nanakkot_logo.png" alt="나는꽃 로고" onerror="this.src='https://placehold.co/400x140/F5F2EB/2D2926?text=Logo'">
+                <span class="logo-text-ja">私は花</span>
+            </div>
+            <p class="header-desc">古民家で楽しむ、体に優しい韓国フュージョンダイニング</p>
+        </div>
+
+        <!-- 가게 풍경 갤러리 (images/store 안의 사진들) -->
+        <div class="store-gallery">
+            <img src="images/store/store1.jpg" alt="お店の風景" onerror="this.onerror=null; this.src='https://placehold.co/400x300/F5F2EB/2D2926?text=Store+1';">
+            <img src="images/store/store2.jpg" alt="お店の風景" onerror="this.onerror=null; this.src='https://placehold.co/400x300/F5F2EB/2D2926?text=Store+2';">
+            <img src="images/store/store3.jpg" alt="お店の風景" onerror="this.onerror=null; this.src='https://placehold.co/400x300/F5F2EB/2D2926?text=Store+3';">
+            <img src="images/store/store4.jpg" alt="お店の風景" onerror="this.onerror=null; this.src='https://placehold.co/400x300/F5F2EB/2D2926?text=Store+4';">
+        </div>
+
+        <!-- 식당 철학 및 오너 스토리 -->
+        <div class="story-section">
+            <div class="philosophy-grid">
+                <div class="phil-item">
+                    <h4>第一にオーガニック</h4>
+                    <p>地元・能勢の農家さんから直接仕入れる新鮮な無農薬・有機野菜をふんだんに使用。お客様の健康を第一に考えたメニュー構成です。</p>
+                </div>
+                <div class="phil-item">
+                    <h4>古民家の温もり</h4>
+                    <p>長い歴史を持つ古民家を丁寧にリノベーション。30代から80代まで、あらゆる世代の方が心から寛げるカフェのような空間を目指しました。</p>
+                </div>
+                <div class="phil-item">
+                    <h4>こだわりのおかずと雑穀米</h4>
+                    <p>毎日手作りする9種類以上のおかずと、体に優しい五穀雑穀米。野菜本来の甘みと栄養バランスが織りなす優しい味わいをお楽しみください。</p>
+                </div>
+            </div>
+            <div class="owner-message">
+                <img src="images/owner.webp" alt="おかみ" class="owner-photo" onerror="this.onerror=null; this.src='https://placehold.co/150x150/F5F2EB/2D2926?text=Owner';">
+                <div class="owner-text">
+                    <strong style="color: var(--accent-green); font-size: 1.1em; display: block; margin-bottom: 8px;">🍷 おかみよりご挨拶：</strong>
+                    「ようこそ、私は花へ。体に優しいお食事はもちろん、美味しいワインも取り揃えております。<br>お食事に合うワインのペアリングもご提案しますので、ぜひお気軽にお声がけくださいね。<br>皆様とおしゃべりできるのを楽しみにして、能勢でお待ちしております。」
+                </div>
+            </div>
+        </div>
+
+        <!-- 영업시간 안내 -->
+        <div class="info-section">
+            <h3 style="color: var(--accent-green); margin-top: 0; font-size: 1.5em;">営業時間・定休日</h3>
+            <table class="info-table">
+                <tr>
+                    <th>営業時間</th>
+                    <td>09:00 〜 20:00</td>
+                </tr>
+                <tr>
+                    <th>定休日</th>
+                    <td>水曜日 <span style="font-size: 0.8em; font-weight: normal;">(※祝日の場合は営業いたします)</span></td>
+                </tr>
+                <tr>
+                    <th>現在の状態</th>
+                    <td id="business-status-text" style="font-weight: bold; font-size: 1.05em;">状態確認中...</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="footer"><p>© 2026 私は花. All rights reserved.</p></div>
+    </div>
+
+    <!-- 🗺️ モーダル: アクセス -->
+    <div id="accessModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <h3 style="margin-top: 0; color: var(--accent-green);">アクセス</h3>
+            <p style="font-weight: 600; font-size: 1.1em; margin-bottom: 5px; color: var(--text-main);">私は花</p>
+            <p style="color: var(--text-sub); margin-bottom: 15px; font-size: 0.9em;">〒563-0355 大阪府豊能郡能勢町下田１９８−１</p>
+            <iframe class="modal-map" src="https://maps.google.com/maps?q=大阪府豊能郡能勢町下田１９８−１&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://www.google.com/maps/search/?api=1&query=大阪府豊能郡能勢町下田１９８−１" target="_blank" class="btn-nav">📍 Google Mapsでナビを開始</a>
+        </div>
+    </div>
+
+    <!-- 🤖 モーダル: AI アシスタント -->
+    <div id="aiModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeAiModal()">×</button>
+            <h3 style="margin-top: 0; color: var(--accent-green);">🤖 AI アシスタント</h3>
+            <p style="color: var(--text-sub); font-size: 0.9em; margin-bottom: 10px;">お店について何でも聞いてください！</p>
+            <div class="ai-input-group">
+                <input type="text" placeholder="質問を入力してください..." disabled>
+                <button onclick="alert('ただいま準備中です。')">送信</button>
+            </div>
+            <p style="color: #F4B400; font-size: 0.85em; margin-top: 20px; font-weight: bold;">※ 現在、AI機能は準備中です。</p>
+        </div>
+    </div>
+    
+    <!-- 🅿️ モーダル: 駐車場情報 -->
+    <div id="parkingModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeParkingModal()">×</button>
+            <h3 style="margin-top: 0; color: #3B5998;">駐車場のご案内</h3>
+            <p style="font-weight: 600; font-size: 1.1em; margin-bottom: 5px; color: var(--text-main);">店舗の向かい側に駐車場完備</p>
+            
+            <img src="images/parking.jpg" alt="駐車場" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border-color);" onerror="this.src='https://placehold.co/400x250/F5F2EB/2D2926?text=Parking'">
+        </div>
+    </div>
+
+    <script src="common.js" defer></script>
+</body>
+</html>

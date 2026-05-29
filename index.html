@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私は花 - 韓国フュージョンダイニング</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        :root {
+            --badge-rice: #4E6E35;
+            --badge-no-rice: #B07D62;
+        }
+
+        /* --- 헤더 및 로고 --- */
+        .header {
+            text-align: center;
+            padding: 30px 0 20px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+        
+        .logo-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .logo-img {
+            max-height: 140px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.05)); 
+        }
+
+        .logo-text-ja {
+            position: absolute;
+            bottom: 0px;
+            left: -10px;
+            font-size: 1.2em;
+            color: #FFFFFF;
+            font-family: 'Noto Serif JP', serif;
+            background-color: var(--accent-green);
+            padding: 2px 8px;
+            border-radius: 4px;
+            letter-spacing: 2px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .header-desc {
+            font-size: 1.1em;
+            color: var(--text-sub);
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* --- 🌸 메뉴 섹션 구분선 --- */
+        .menu-divider {
+            text-align: center;
+            margin: 60px 0 40px;
+            position: relative;
+        }
+
+        .menu-divider h2 {
+            font-size: 2.2em;
+            color: var(--text-main);
+            display: inline-block;
+            background-color: var(--bg-base); /* 가림막을 배경색과 일치 */
+            padding: 0 30px;
+            position: relative;
+            z-index: 2;
+            font-family: 'Noto Serif JP', serif;
+            letter-spacing: 4px;
+        }
+
+        .menu-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--border-color);
+            z-index: 1;
+        }
+
+        .menu-divider p {
+            font-size: 0.85em;
+            color: var(--accent-green);
+            margin: 5px 0 0;
+            letter-spacing: 3px;
+            font-weight: 500;
+        }
+
+        /* --- 📸 공통 제공 안내: 반찬 9종 & 엄선 잡곡밥 피처 레이아웃 --- */
+        .common-feature {
+            background-color: var(--bg-card);
+            border: 1px solid var(--accent-green);
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+        }
+
+        .common-feature-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1.8fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .common-feature-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .common-images-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .common-images-column {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .common-images-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .common-img-wrapper {
+            width: 100%;
+            height: 130px;
+            background-color: #F5F2EB;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .common-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .common-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--accent-green);
+            color: #FFFFFF;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: bold;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
+            z-index: 10;
+        }
+
+        .common-info {
+            text-align: left;
+        }
+
+        .common-info h3 {
+            font-size: 1.4em;
+            margin: 0 0 15px 0;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            word-break: keep-all;
+        }
+
+        .common-info .sub-section {
+            margin-bottom: 15px;
+        }
+
+        .common-info .sub-section h4 {
+            font-size: 1.05em;
+            color: var(--accent-green);
+            margin: 0 0 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .common-info p {
+            margin: 0;
+            color: var(--text-sub);
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .common-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 15px;
+        }
+
+        .common-tag {
+            background-color: #F5F2EB;
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8em;
+            color: var(--text-main);
+        }
+
+        /* --- ➕ 공통 세트와 식사 메뉴를 이어주는 플러스 디바이더 --- */
+        .plus-divider {
+            text-align: center;
+            margin: 20px 0 10px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .plus-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 54px;
+            height: 54px;
+            background-color: var(--accent-green);
+            color: #FFFFFF;
+            font-size: 32px;
+            font-weight: bold;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 3px solid var(--bg-base);
+            user-select: none;
+        }
+
+        /* --- 카테고리 섹션 타이틀 --- */
+        .category-title {
+            text-align: center;
+            font-size: 1.8em;
+            color: var(--text-main);
+            margin: 40px 0 30px;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--accent-green);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .category-wrapper {
+            text-align: center;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .menu-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+        }
+
+        .menu-card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transform: translateY(-3px);
+            border-color: var(--accent-green);
+        }
+
+        /* 배지 스타일 */
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: bold;
+            color: #FFFFFF;
+            z-index: 10;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .badge-rice {
+            background-color: var(--badge-rice);
+        }
+
+        .badge-no-rice {
+            background-color: var(--badge-no-rice);
+        }
+
+        .menu-img-placeholder {
+            width: 100%;
+            height: 220px;
+            background-color: #F5F2EB; 
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .menu-img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.95; 
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-card:hover .menu-img-placeholder img {
+            opacity: 1; 
+        }
+
+        .menu-name-ja {
+            font-size: 1.4em;
+            font-family: 'Noto Serif JP', serif;
+            color: var(--text-main);
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        .menu-name-ko {
+            font-size: 0.85em;
+            color: var(--accent-green);
+            margin-bottom: 15px;
+        }
+
+        .menu-price {
+            font-size: 1.2em;
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+        
+        .menu-price::after {
+            content: ' 円 (税込)';
+            font-size: 0.7em;
+            color: var(--text-sub);
+        }
+
+        .footer { margin-top: 60px; }
+    </style>
+</head>
+<body>
+
+    <!-- 🧭 네비게이션 바 -->
+    <nav class="navbar">
+        <div class="nav-top">
+            <button class="ai-btn" onclick="openAiModal()">🤖 AI アシスタント</button>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <div id="business-status" class="status-badge">状態確認中...</div>
+                <button class="parking-btn" onclick="openParkingModal()">P</button>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="about.html">お店の紹介</a>
+            <a href="index.html" class="active">お食事</a>
+            <a href="drink.html">お飲み物</a>
+            <a href="javascript:void(0);" onclick="openModal()">アクセス</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- 헤더 및 로고 영역 -->
+        <div class="header">
+            <div class="logo-wrapper">
+                <img class="logo-img" src="images/nanakkot_logo.png" alt="나는꽃 로고" onerror="this.src='https://placehold.co/400x140/F5F2EB/2D2926?text=Logo'">
+                <span class="logo-text-ja">私は花</span>
+            </div>
+            <p class="header-desc">
+                古民家で楽しむ、体に優しい韓国フュージョンダイニング
+            </p>
+        </div>
+
+        <!-- 🌸 메뉴 섹션 구분선 (소개 파트와 메뉴 판의 자연스러운 연출) 🌸 -->
+        <div class="menu-divider">
+            <h2>お品書き</h2>
+            <p>MENU</p>
+        </div>
+
+        <!-- 📸 공통 시그니처 혜택 피처 (반찬 9종 & 철학의 잡곡밥 분할 레이아웃) -->
+        <div class="common-feature">
+            <div class="common-feature-grid">
+                <!-- 좌측 이미지 영역 -->
+                <div class="common-images-column">
+                    <!-- 1. 명물 반찬 9종 이미지 카드 -->
+                    <div class="common-img-wrapper">
+                        <span class="common-badge">おかず9種</span>
+                        <img src="images/menu/banchan_9set.webp" alt="私は花のおかず9種" onerror="handleImageError(this)">
+                    </div>
+                    <!-- 2. 엄선 잡곡밥 이미지 카드 -->
+                    <div class="common-img-wrapper">
+                        <span class="common-badge" style="background-color: var(--badge-no-rice);">こだわり雑穀米</span>
+                        <img src="images/menu/rice_mixed.webp" alt="こだわり雑穀米" onerror="handleImageError(this)">
+                    </div>
+                </div>
+
+                <!-- 우측 설명 영역 -->
+                <div class="common-info">
+                    <h3>【全食事共通】基本もてなしセット</h3>
+                    
+                    <!-- 반찬 9종 소개 (모든 식사에 공통) -->
+                    <div class="sub-section">
+                        <h4>🥬 名物：日替わりおかず9種プレート</h4>
+                        <p>
+                            地元・能勢の無農薬・有機野菜をふんだんに使い、毎日手作りする9種類の日替わりおかず。モーニングを除くすべてのお食事に、基本セットとして無料提供されます。
+                        </p>
+                    </div>
+
+                    <!-- 잡곡밥 철학 소개 -->
+                    <div class="sub-section">
+                        <h4>🌾 厳選：体に優しい「こだわり雑穀米」</h4>
+                        <p>
+                            栄養バランスに優れ、体に優しく染み渡る自慢の五穀雑穀米。こちらは「ご飯付き」対象メニューにのみセットとして提供されます。（※ビビンバや麺類には、メニューの特性上、ご飯は付きません）
+                        </p>
+                    </div>
+
+                    <!-- 직관적인 미니 태그 구성 -->
+                    <div class="common-tags">
+                        <span class="common-tag">🥬 おかず9種 (全食事共通)</span>
+                        <span class="common-tag">🌾 雑穀米 (対象メニュー限定)</span>
+                        <span class="common-tag">🥗 能勢産地場野菜</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ➕ 기본 세트와 식사를 유기적으로 이어주는 플러스(+) 아이콘 ➕ -->
+        <div class="plus-divider">
+            <div class="plus-icon">＋</div>
+        </div>
+
+
+        <!-- ================= 카테고리 1: ご飯付き (밥 제공 식사) ================= -->
+        <div class="category-wrapper">
+            <h2 class="category-title">お食事（雑穀米 ＋ おかず9種付き）<span style="font-size: 0.5em; display: block; margin-top: 5px; font-weight: normal; color: var(--text-sub);">ALL 1,500円</span></h2>
+        </div>
+        
+        <div class="menu-grid">
+            <!-- 삼겹살 정식 -->
+            <div class="menu-card">
+                <span class="badge badge-rice">雑穀米＋おかず9種</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/samgyeopsal.webp" alt="サムギョプサル定食" onerror="handleImageError(this)">
+                </div>
+                <div class="menu-name-ja">サムギョプサル定食</div>
+                <div class="menu-name-ko">삼겹살 정식</div>
+                <div class="menu-price">1,500</div>
+            </div>
+
+            <!-- 순두부 정식 -->
+            <div class="menu-card">
+                <span class="badge badge-rice">雑穀米＋おかず9種</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/sundubu_set.webp" alt="スンドゥブ定食" onerror="handleImageError(this)">
+                </div>
+                <div class="menu-name-ja">スンドゥブ定食</div>
+                <div class="menu-name-ko">순두부 정식</div>
+                <div class="menu-price">1,500</div>
+            </div>
+
+            <!-- 돼지 불고기 정식 -->
+            <div class="menu-card">
+                <span class="badge badge-rice">雑穀米＋おかず9種</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/pork_bulgogi.webp" alt="豚プルコギ定食" onerror="handleImageError(this)">
+                </div>
+                <div class="menu-name-ja">豚プルコギ定食</div>
+                <div class="menu-name-ko">돼지 불고기 정식</div>
+                <div class="menu-price">1,500</div>
+            </div>
+
+            <!-- 해물야채전 -->
+            <div class="menu-card">
+                <span class="badge badge-rice">雑穀米＋おかず9種</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/seafood_pancake.webp" alt="海鮮野菜チヂミ" onerror="handleImageError(this)">
+                </div>
+                <div class="menu-name-ja">海鮮野菜チヂミ</div>
+                <div class="menu-name-ko">해물야채전</div>
+                <div class="menu-price">1,500</div>
+            </div>
+
+            <!-- 한국식 고기만두 -->
+            <div class="menu-card">
+                <span class="badge badge-rice">雑穀米＋おかず9種</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/meat_dumpling.webp" alt="韓国肉餃子" onerror="handleImageError(this)">
+                </div>
+                <div class="menu-name-ja">韓国肉餃子</div>
+                <div class="menu-name-ko">한국식 고기만두</div>
+                <div class="menu-price">1,500</div>
+            </div>
+
+            <!-- 잡채 -->
+            <div class="menu-card">
+                <span class="badge badge-rice">雑穀米＋おかず9種</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/japchae.webp" alt="チャプチェ" onerror="handleImageError(this)">
+                </div>
+                <div class="menu-name-ja">チャプチェ</div>
+                <div class="menu-name-ko">잡채</div>
+                <div class="menu-price">1,500</div>
+            </div>
+        </div>
+
+
+        <!-- ================= 카테고리 2: ご飯なし (밥 미제공 식사 및 면류) ================= -->
+        <div class="category-wrapper">
+            <h2 class="category-title">お食事・麺類（おかず9種付き・ご飯なし）<span style="font-size: 0.5em; display: block; margin-top: 5px; font-weight: normal; color: var(--text-sub);">ALL 1,500円</span></h2>
+        </div>
+
+        <div class="menu-grid">
+            <!-- 오가닉 야채 비빔밥 -->
+            <div class="menu-card">
+                <span class="badge badge-no-rice">おかず9種付き</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/bibimbap.webp" alt="オーガニック野菜ビビンバ" onerror="handleImageError(this)">
+                </div>
+                <div class="menu-name-ja">オーガニック野菜ビビンバ</div>
+                <div class="menu-name-ko">오가닉 야채 비빔밥</div>
+                <div class="menu-price">1,500</div>
+            </div>
+
+            <!-- 순두부 파스타 -->
+            <div class="menu-card">
+                <span class="badge badge-no-rice">おかず9種付き</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/sundubu_pasta.webp" alt="スンドゥブパスタ" onerror="handleImageError(this)">
+                </div>
+                <div class="menu-name-ja">スンドゥブパスタ</div>
+                <div class="menu-name-ko">순두부 파스타</div>
+                <div class="menu-price">1,500</div>
+            </div>
+            
+            <!-- 두유 국수 -->
+            <div class="menu-card">
+                <span class="badge badge-no-rice">おかず9種付き</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/soymilk_noodle.webp" alt="豆乳クッス" onerror="handleImageError(this)">
+                </div>
+                <div class="menu-name-ja">豆乳クッス</div>
+                <div class="menu-name-ko">두유 국수</div>
+                <div class="menu-price">1,500</div>
+            </div>
+            
+            <!-- 비빔국수 -->
+            <div class="menu-card">
+                <span class="badge badge-no-rice">おかず9種付き</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/bibim_noodle.webp" alt="ビビンクッス" onerror="handleImageError(this)">
+                </div>
+                <div class="menu-name-ja">ビビンクッス</div>
+                <div class="menu-name-ko">비빔국수</div>
+                <div class="menu-price">1,500</div>
+            </div>
+        </div>
+
+
+        <!-- ================= 카테고리 3: 朝食限定 (아침 모닝 세트) ================= -->
+        <div class="category-wrapper">
+            <h2 class="category-title">モーニング（朝食限定）<span style="font-size: 0.5em; display: block; margin-top: 5px; font-weight: normal; color: var(--text-sub);">9:00 - 11:00</span></h2>
+        </div>
+
+        <div class="menu-grid">
+            <!-- 모닝 세트 -->
+            <div class="menu-card">
+                <span class="badge" style="background-color: #8C7A6B;">朝食限定</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/morning_set.webp" alt="モーニングセット" onerror="this.onerror=null; this.src='images/menu/morning_set.jpg';">
+                </div>
+                <div class="menu-name-ja">モーニングセット</div>
+                <div class="menu-name-ko">모닝 세트</div>
+                <div class="menu-price">800</div>
+            </div>
+        </div>
+        
+        <div class="footer" id="footer">
+            <p>※ 全てのメニューに、能勢の新鮮なオーガニック野菜を使用しております。</p>
+            <p>© 2026 私は花. All rights reserved.</p>
+        </div>
+
+        <!-- 🗺️ 모달: 오시는 길 -->
+        <div id="accessModal" class="modal-overlay">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal()">×</button>
+                <h3 style="margin-top: 0; color: var(--accent-green);">アクセス</h3>
+                <p style="font-weight: 600; font-size: 1.1em; margin-bottom: 5px; color: var(--text-main);">私は花</p>
+                <p style="color: var(--text-sub); margin-bottom: 15px; font-size: 0.9em;">〒563-0355 大阪府豊能郡能勢町下田１９８−１</p>
+                
+                <iframe class="modal-map" src="https://maps.google.com/maps?q=大阪府豊能郡能勢町下田１９８−１&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+                
+                <a href="https://www.google.com/maps/search/?api=1&query=大阪府豊能郡能勢町下田１９８−１" target="_blank" class="btn-nav">
+                    📍 Google Mapsでナビを開始
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 🤖 모달: AI 비서 -->
+    <div id="aiModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeAiModal()">×</button>
+            <h3 style="margin-top: 0; color: var(--accent-green);">🤖 AI アシスタント</h3>
+                <p style="color: var(--text-sub); font-size: 0.9em; margin-bottom: 10px;">お店について何でも聞いてください！</p>
+            <div class="ai-input-group">
+                <input type="text" placeholder="質問を入力してください..." disabled>
+                    <button onclick="alert('ただいま準備中です。')">送信</button>
+            </div>
+            <p style="color: #F4B400; font-size: 0.85em; margin-top: 20px; font-weight: bold;">※ 現在、AI機能は準備中です。</p>
+        </div>
+    </div>
+
+    <!-- 🅿️ 모달: 주차장 정보 -->
+    <div id="parkingModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeParkingModal()">×</button>
+            <h3 style="margin-top: 0; color: #3B5998;">駐車場のご案内 </h3>
+            <p style="font-weight: 600; font-size: 1.1em; margin-bottom: 5px; color: var(--text-main);">店舗の向かい側に駐車場完備</p>
+            
+            <img src="images/parking.jpg" alt="駐車場" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border-color);" onerror="this.src='https://placehold.co/400x250/F5F2EB/2D2926?text=Parking'">
+        </div>
+    </div>
+
+    <script src="common.js" defer></script>
+    <!-- ⚡ 스마트한 통합 이미지 에러 핸들러 스크립트 ⚡ -->
+    <script>
+        function handleImageError(img) {
+            const currentSrc = img.src;
+            // WebP 로드 실패 시 -> PNG 시도
+            if (currentSrc.endsWith('.webp')) {
+                img.src = currentSrc.replace('.webp', '.png');
+            } 
+            // PNG 로드 실패 시 -> JPG 시도
+            else if (currentSrc.endsWith('.png')) {
+                img.src = currentSrc.replace('.png', '.jpg');
+            } 
+            // JPG까지 실패하면 -> 깔끔한 연한 플레이스홀더 출력 및 에러 차단
+            else {
+                img.onerror = null; // 무한 루프 방지
+                    img.src = 'https://placehold.co/300x220/F5F2EB/2D2926?text=Image';
+            }
+        }
+    </script>
+
+</body>
+</html>

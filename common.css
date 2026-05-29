@@ -1,0 +1,83 @@
+:root {
+    --bg-base: #F9F6F0; 
+    --bg-card: #FFFFFF;
+    --text-main: #2D2926;
+    --text-sub: #6B665E;
+    --accent-green: #556B2F;
+    --border-color: #E5E1D8;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: var(--bg-base);
+    background-image: radial-gradient(rgba(45, 41, 38, 0.03) 1px, transparent 1px), radial-gradient(rgba(45, 41, 38, 0.02) 1px, transparent 1px);
+    background-position: 0 0, 15px 15px;
+    background-size: 30px 30px;
+    color: var(--text-main);
+    margin: 0; padding: 0; line-height: 1.8;
+}
+
+h1, h2, h3, h4 { font-family: 'Noto Serif JP', serif; font-weight: 600; color: var(--text-main); }
+.container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+
+.navbar {
+    position: sticky; top: 0; background-color: rgba(249, 246, 240, 0.95);
+    backdrop-filter: blur(5px); border-bottom: 1px solid var(--border-color);
+    z-index: 1000; padding: 15px 20px; display: flex; flex-direction: column; align-items: center; gap: 15px;
+}
+.nav-top {
+    display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1000px;
+}
+.nav-links { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; }
+.navbar a { text-decoration: none; color: var(--text-main); font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 1.1em; transition: color 0.3s; }
+.navbar a:hover, .navbar a.active { color: var(--accent-green); border-bottom: 2px solid var(--accent-green); }
+
+/* --- AI 팝업 버튼 --- */
+.ai-btn {
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 0.9em; font-weight: bold; color: white;
+    background: linear-gradient(135deg, #6B8E23, #4E6E35);
+    border: none; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s; display: flex; align-items: center; gap: 6px;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+.ai-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+
+/* --- 영업 상태 뱃지 --- */
+.status-badge {
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 0.85em; font-weight: bold; color: white; background-color: #757575;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); white-space: nowrap; transition: background-color 0.5s;
+}
+
+/* --- 주차장 팝업 버튼 --- */
+.parking-btn {
+    width: 32px; height: 32px; border-radius: 50%; padding: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1em; font-weight: bold; color: white; background-color: #3B5998;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: none; cursor: pointer; transition: background-color 0.3s;
+}
+.parking-btn:hover { background-color: #2a4170; }
+
+/* --- 모바일 반응형 (768px 이하) --- */
+@media (max-width: 768px) {
+    .navbar { padding: 15px; gap: 12px; }
+    .nav-links { gap: 15px; }
+    .ai-btn, .status-badge { font-size: 0.75em; padding: 6px 10px; }
+    .parking-btn { width: 28px; height: 28px; font-size: 0.9em; }
+}
+
+/* --- 모달 (오시는 길 & AI) --- */
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
+.modal-content { background: var(--bg-card); padding: 30px; border-radius: 12px; width: 90%; max-width: 500px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center; }
+.modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.5em; cursor: pointer; color: var(--text-main); }
+.modal-map { width: 100%; height: 250px; border-radius: 8px; margin: 20px 0; border: 1px solid var(--border-color); }
+.btn-nav { display: inline-block; background-color: var(--accent-green); color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; margin-top: 10px; transition: background 0.3s; font-size: 0.95em; }
+.btn-nav:hover { background-color: #3e4f22; }
+
+/* --- AI 모달 입력 폼 --- */
+.ai-input-group { display: flex; gap: 10px; margin-top: 15px; }
+.ai-input-group input { flex: 1; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 1em; font-family: 'Noto Sans JP', sans-serif; background-color: #F9F8F5; }
+.ai-input-group button { background-color: var(--accent-green); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; font-family: 'Noto Sans JP', sans-serif; transition: background 0.3s; white-space: nowrap; }
+
+.footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: var(--text-sub); font-size: 0.9em; }
