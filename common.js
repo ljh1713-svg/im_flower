@@ -54,17 +54,30 @@ async function updateBusinessStatus() {
             return;
         }
 
-        const openTime = 9 * 60;
-        const closeTime = 20 * 60;
-        const minutesToOpen = openTime - totalMinutes;
-        const minutesToClose = closeTime - totalMinutes;
+        const openTime1 = 9 * 60;
+        const closeTime1 = 14 * 60 + 30; // 14:30
+        const openTime2 = 17 * 60 + 30; // 17:30
+        const closeTime2 = 20 * 60; // 20:00
+        
+        const minutesToOpen1 = openTime1 - totalMinutes;
+        const minutesToClose1 = closeTime1 - totalMinutes;
+        const minutesToOpen2 = openTime2 - totalMinutes;
+        const minutesToClose2 = closeTime2 - totalMinutes;
 
-        if (totalMinutes >= openTime - 30 && totalMinutes < openTime) {
-            setStatus('#F4B400', `まもなく開店 (${minutesToOpen}分前)`, `まもなく開店 (${minutesToOpen}分前)`);
-        } else if (totalMinutes >= openTime && totalMinutes < closeTime - 30) {
+        if (totalMinutes >= openTime1 - 30 && totalMinutes < openTime1) {
+            setStatus('#F4B400', `まもなく開店 (${minutesToOpen1}分前)`, `まもなく開店 (${minutesToOpen1}分前)`);
+        } else if (totalMinutes >= openTime1 && totalMinutes < closeTime1 - 30) {
             setStatus('#4CAF50', '只今営業中', '只今営業中');
-        } else if (totalMinutes >= closeTime - 30 && totalMinutes < closeTime) {
-            setStatus('#FF9800', `まもなく閉店 (${minutesToClose}分前)`, `まもなく閉店 (${minutesToClose}分前)`);
+        } else if (totalMinutes >= closeTime1 - 30 && totalMinutes < closeTime1) {
+            setStatus('#FF9800', `まもなく休憩 (${minutesToClose1}分前)`, `まもなく休憩 (${minutesToClose1}分前)`);
+        } else if (totalMinutes >= closeTime1 && totalMinutes < openTime2 - 30) {
+            setStatus('#757575', '休憩中 (17:30再開)', '休憩中 (17:30再開)');
+        } else if (totalMinutes >= openTime2 - 30 && totalMinutes < openTime2) {
+            setStatus('#F4B400', `まもなく営業再開 (${minutesToOpen2}分前)`, `まもなく営業再開 (${minutesToOpen2}分前)`);
+        } else if (totalMinutes >= openTime2 && totalMinutes < closeTime2 - 30) {
+            setStatus('#4CAF50', '只今営業中', '只今営業中');
+        } else if (totalMinutes >= closeTime2 - 30 && totalMinutes < closeTime2) {
+            setStatus('#FF9800', `まもなく閉店 (${minutesToClose2}分前)`, `まもなく閉店 (${minutesToClose2}分前)`);
         } else {
             setStatus('#757575', '只今準備中', '只今準備中');
         }

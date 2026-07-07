@@ -47,7 +47,7 @@
         .footer { margin-top: 20px; }
     </style>
 </head>
-<body>
+<body> 
 
     <nav class="navbar">
         <div class="nav-top">
@@ -64,6 +64,7 @@
             <a href="javascript:void(0);" onclick="openModal()">アクセス</a>
         </div>
     </nav>
+    <div id="navbar-placeholder"></div>
 
     <div class="container">
         <div class="header">
@@ -75,15 +76,15 @@
         </div>
 
         <!-- 가게 풍경 갤러리 (images/store 안의 사진들) -->
-        <div class="store-gallery">
+        <section class="store-gallery">
             <img src="images/store/store1.jpg" alt="お店の風景" onerror="this.onerror=null; this.src='https://placehold.co/400x300/F5F2EB/2D2926?text=Store+1';">
             <img src="images/store/store2.jpg" alt="お店の風景" onerror="this.onerror=null; this.src='https://placehold.co/400x300/F5F2EB/2D2926?text=Store+2';">
             <img src="images/store/store3.jpg" alt="お店の風景" onerror="this.onerror=null; this.src='https://placehold.co/400x300/F5F2EB/2D2926?text=Store+3';">
             <img src="images/store/store4.jpg" alt="お店の風景" onerror="this.onerror=null; this.src='https://placehold.co/400x300/F5F2EB/2D2926?text=Store+4';">
-        </div>
+        </section>
 
         <!-- 식당 철학 및 오너 스토리 -->
-        <div class="story-section">
+        <section class="story-section">
             <div class="philosophy-grid">
                 <div class="phil-item">
                     <h4>第一にオーガニック</h4>
@@ -105,15 +106,19 @@
                     「ようこそ、私は花へ。体に優しいお食事はもちろん、美味しいワインも取り揃えております。<br>お食事に合うワインのペアリングもご提案しますので、ぜひお気軽にお声がけくださいね。<br>皆様とおしゃべりできるのを楽しみにして、能勢でお待ちしております。」
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- 영업시간 안내 -->
-        <div class="info-section">
+        <section class="info-section">
             <h3 style="color: var(--accent-green); margin-top: 0; font-size: 1.5em;">営業時間・定休日</h3>
             <table class="info-table">
                 <tr>
+                    <th>電話番号</th>
+                    <td>072-731-3933</td>
+                </tr>
+                <tr>
                     <th>営業時間</th>
-                    <td>09:00 〜 20:00</td>
+                    <td>09:00 〜 14:30 / 17:30 〜 20:00</td>
                 </tr>
                 <tr>
                     <th>定休日</th>
@@ -124,47 +129,14 @@
                     <td id="business-status-text" style="font-weight: bold; font-size: 1.05em;">状態確認中...</td>
                 </tr>
             </table>
-        </div>
+            <p style="margin-top: 20px; font-size: 0.95em; color: #4c311c;"><strong>朝食限定メニュー</strong>：9:00〜11:00に「モーニングコーヒーセット」を1,000円でご用意しております。</p>
+        </section>
 
         <div class="footer"><p>© 2026 私は花. All rights reserved.</p></div>
     </div>
 
-    <!-- 🗺️ モーダル: アクセス -->
-    <div id="accessModal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">×</button>
-            <h3 style="margin-top: 0; color: var(--accent-green);">アクセス</h3>
-            <p style="font-weight: 600; font-size: 1.1em; margin-bottom: 5px; color: var(--text-main);">私は花</p>
-            <p style="color: var(--text-sub); margin-bottom: 15px; font-size: 0.9em;">〒563-0355 大阪府豊能郡能勢町下田１９８−１</p>
-            <iframe class="modal-map" src="https://maps.google.com/maps?q=大阪府豊能郡能勢町下田１９８−１&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
-            <a href="https://www.google.com/maps/search/?api=1&query=大阪府豊能郡能勢町下田１９８−１" target="_blank" class="btn-nav">📍 Google Mapsでナビを開始</a>
-        </div>
-    </div>
-
-    <!-- 🤖 モーダル: AI アシスタント -->
-    <div id="aiModal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeAiModal()">×</button>
-            <h3 style="margin-top: 0; color: var(--accent-green);">🤖 AI アシスタント</h3>
-            <p style="color: var(--text-sub); font-size: 0.9em; margin-bottom: 10px;">お店について何でも聞いてください！</p>
-            <div class="ai-input-group">
-                <input type="text" placeholder="質問を入力してください..." disabled>
-                <button onclick="alert('ただいま準備中です。')">送信</button>
-            </div>
-            <p style="color: #F4B400; font-size: 0.85em; margin-top: 20px; font-weight: bold;">※ 現在、AI機能は準備中です。</p>
-        </div>
-    </div>
-    
-    <!-- 🅿️ モーダル:  駐車場情報 -->
-    <div id="parkingModal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeParkingModal()">×</button>
-            <h3 style="margin-top: 0; color: #3B5998;">駐車場のご案内</h3>
-            <p style="font-weight: 600; font-size: 1.1em; margin-bottom: 5px; color: var(--text-main);">店舗の向かい側に駐車場完備</p>
-            
-            <img src="images/parking.jpg" alt="駐車場" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border-color);" onerror="this.src='https://placehold.co/400x250/F5F2EB/2D2926?text=Parking'">
-        </div>
-    </div>
+    <div id="footer-placeholder"></div>
+    <div id="modals-placeholder"></div>
 
     <script src="common.js" defer></script>
 </body>

@@ -141,7 +141,7 @@
 
         .common-img-wrapper {
             width: 100%;
-            height: 130px;
+            height: 200px;
             background-color: #F5F2EB;
             border: 1px solid var(--border-color);
             border-radius: 8px;
@@ -153,6 +153,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .menu-card.breakfast .menu-img-placeholder {
+            aspect-ratio: 1 / 1;
+            height: auto;
+            min-height: 260px;
         }
 
         .common-badge {
@@ -379,6 +385,7 @@
             <a href="javascript:void(0);" onclick="openModal()">アクセス</a>
         </div>
     </nav>
+    <div id="navbar-placeholder"></div>
 
     <div class="container">
         <!-- 헤더 및 로고 영역 -->
@@ -406,12 +413,12 @@
                     <!-- 1. 명물 반찬 9종 이미지 카드 -->
                     <div class="common-img-wrapper">
                         <span class="common-badge">おかず9種</span>
-                        <img src="images/menu/banchan_9set.webp" alt="私は花のおかず9種" onerror="handleImageError(this)">
+                        <img src="images/menu/banchan_9set.png" alt="私は花のおかず9種" onerror="handleImageError(this)">
                     </div>
                     <!-- 2. 엄선 잡곡밥 이미지 카드 -->
                     <div class="common-img-wrapper">
                         <span class="common-badge" style="background-color: var(--badge-no-rice);">こだわり雑穀米</span>
-                        <img src="images/menu/rice_mixed.webp" alt="こだわり雑穀米" onerror="handleImageError(this)">
+                        <img src="images/menu/rice_mixed.jpg" alt="こだわり雑穀米" onerror="handleImageError(this)">
                     </div>
                 </div>
 
@@ -431,7 +438,8 @@
                     <div class="sub-section">
                         <h4>🌾 厳選：体に優しい「こだわり雑穀米」</h4>
                         <p>
-                            栄養バランスに優れ、体に優しく染み渡る自慢の五穀雑穀米。こちらは「ご飯付き」対象メニューにのみセットとして提供されます。（※ビビンバや麺類には、メニューの特性上、ご飯は付きません）
+                            栄養バランスに優れ、体に優しく染み渡る自慢の五穀雑穀米。こちらは「ご飯付き」対象メニューにのみセットとして提供されます。（※ビビンバや麺類には、メニューの特性上、ご飯は付きません）<br>
+                            <strong style="color: var(--accent-green);">※ おかわり（追加ご飯）は +150円（税込）となります。</strong>
                         </p>
                     </div>
 
@@ -453,195 +461,223 @@
 
         <!-- ================= 카테고리 1: ご飯付き (밥 제공 식사) ================= -->
         <div class="category-wrapper">
-            <h2 class="category-title">お食事（雑穀米 ＋ おかず9種付き）<span style="font-size: 0.5em; display: block; margin-top: 5px; font-weight: normal; color: var(--text-sub);">ALL 1,500円</span></h2>
+            <h2 class="category-title">お食事（雑穀米 ＋ おかず9種付き）<span style="font-size: 0.5em; display: block; margin-top: 5px; font-weight: normal; color: var(--text-sub);">ALL 1,800円</span></h2>
         </div>
         
         <div class="menu-grid">
             <!-- 삼겹살 정식 -->
             <div class="menu-card">
                 <span class="badge badge-rice">雑穀米＋おかず9種</span>
+
                 <div class="menu-img-placeholder">
-                    <img src="images/menu/samgyeopsal.webp" alt="サムギョプサル定食" onerror="handleImageError(this)">
+                    <img src="images/menu/samgyeopsal.jpg" alt="サムギョプサル定食" onerror="handleImageError(this)">
                 </div>
                 <div class="menu-name-ja">サムギョプサル定食</div>
                 <div class="menu-name-ko">삼겹살 정식</div>
-                <div class="menu-price">1,500</div>
+                <div class="menu-price">1,800</div>
             </div>
 
             <!-- 순두부 정식 -->
             <div class="menu-card">
                 <span class="badge badge-rice">雑穀米＋おかず9種</span>
+
                 <div class="menu-img-placeholder">
-                    <img src="images/menu/sundubu_set.webp" alt="スンドゥブ定食" onerror="handleImageError(this)">
+                    <img src="images/menu/sundubu_set.jpg" alt="スンドゥブ定食" onerror="handleImageError(this)">
                 </div>
                 <div class="menu-name-ja">スンドゥブ定食</div>
                 <div class="menu-name-ko">순두부 정식</div>
-                <div class="menu-price">1,500</div>
+                <div class="menu-price">1,800</div>
             </div>
 
             <!-- 돼지 불고기 정식 -->
             <div class="menu-card">
                 <span class="badge badge-rice">雑穀米＋おかず9種</span>
+
                 <div class="menu-img-placeholder">
-                    <img src="images/menu/pork_bulgogi.webp" alt="豚プルコギ定食" onerror="handleImageError(this)">
+                    <img src="images/menu/pork_bulgogi.jpg" alt="豚プルコギ定食" onerror="handleImageError(this)">
                 </div>
                 <div class="menu-name-ja">豚プルコギ定食</div>
                 <div class="menu-name-ko">돼지 불고기 정식</div>
-                <div class="menu-price">1,500</div>
-            </div>
-
-            <!-- 해물야채전 -->
-            <div class="menu-card">
-                <span class="badge badge-rice">雑穀米＋おかず9種</span>
-                <div class="menu-img-placeholder">
-                    <img src="images/menu/seafood_pancake.webp" alt="海鮮野菜チヂミ" onerror="handleImageError(this)">
-                </div>
-                <div class="menu-name-ja">海鮮野菜チヂミ</div>
-                <div class="menu-name-ko">해물야채전</div>
-                <div class="menu-price">1,500</div>
-            </div>
-
-            <!-- 한국식 고기만두 -->
-            <div class="menu-card">
-                <span class="badge badge-rice">雑穀米＋おかず9種</span>
-                <div class="menu-img-placeholder">
-                    <img src="images/menu/meat_dumpling.webp" alt="韓国肉餃子" onerror="handleImageError(this)">
-                </div>
-                <div class="menu-name-ja">韓国肉餃子</div>
-                <div class="menu-name-ko">한국식 고기만두</div>
-                <div class="menu-price">1,500</div>
+                <div class="menu-price">1,800</div>
             </div>
 
             <!-- 잡채 -->
             <div class="menu-card">
                 <span class="badge badge-rice">雑穀米＋おかず9種</span>
+
                 <div class="menu-img-placeholder">
-                    <img src="images/menu/japchae.webp" alt="チャプチェ" onerror="handleImageError(this)">
+                    <img src="images/menu/japchae.jpg" alt="チャプチェ" onerror="handleImageError(this)">
                 </div>
                 <div class="menu-name-ja">チャプチェ</div>
                 <div class="menu-name-ko">잡채</div>
-                <div class="menu-price">1,500</div>
+                <div class="menu-price">1,800</div>
             </div>
         </div>
 
 
         <!-- ================= 카테고리 2: ご飯なし (밥 미제공 식사 및 면류) ================= -->
         <div class="category-wrapper">
-            <h2 class="category-title">お食事・麺類（おかず9種付き・ご飯なし）<span style="font-size: 0.5em; display: block; margin-top: 5px; font-weight: normal; color: var(--text-sub);">ALL 1,500円</span></h2>
+            <h2 class="category-title">お食事・麺類（おかず9種付き・ご飯なし）<span style="font-size: 0.5em; display: block; margin-top: 5px; font-weight: normal; color: var(--text-sub);">ALL 1,800円</span></h2>
         </div>
 
         <div class="menu-grid">
             <!-- 오가닉 야채 비빔밥 -->
             <div class="menu-card">
                 <span class="badge badge-no-rice">おかず9種付き</span>
+
                 <div class="menu-img-placeholder">
-                    <img src="images/menu/bibimbap.webp" alt="オーガニック野菜ビビンバ" onerror="handleImageError(this)">
+                    <img src="images/menu/bibimbap.jpg" alt="オーガニック野菜ビビンバ" onerror="handleImageError(this)">
                 </div>
                 <div class="menu-name-ja">オーガニック野菜ビビンバ</div>
                 <div class="menu-name-ko">오가닉 야채 비빔밥</div>
-                <div class="menu-price">1,500</div>
+                <div class="menu-price">1,800</div>
             </div>
 
             <!-- 순두부 파스타 -->
             <div class="menu-card">
                 <span class="badge badge-no-rice">おかず9種付き</span>
+
                 <div class="menu-img-placeholder">
-                    <img src="images/menu/sundubu_pasta.webp" alt="スンドゥブパスタ" onerror="handleImageError(this)">
+                    <img src="images/menu/sundubu_pasta.jpg" alt="スンドゥブパスタ" onerror="handleImageError(this)">
                 </div>
                 <div class="menu-name-ja">スンドゥブパスタ</div>
                 <div class="menu-name-ko">순두부 파스타</div>
-                <div class="menu-price">1,500</div>
-            </div>
-            
-            <!-- 두유 국수 -->
-            <div class="menu-card">
-                <span class="badge badge-no-rice">おかず9種付き</span>
-                <div class="menu-img-placeholder">
-                    <img src="images/menu/soymilk_noodle.webp" alt="豆乳クッス" onerror="handleImageError(this)">
-                </div>
-                <div class="menu-name-ja">豆乳クッス</div>
-                <div class="menu-name-ko">두유 국수</div>
-                <div class="menu-price">1,500</div>
+                <div class="menu-price">1,800</div>
             </div>
             
             <!-- 비빔국수 -->
             <div class="menu-card">
                 <span class="badge badge-no-rice">おかず9種付き</span>
+
                 <div class="menu-img-placeholder">
-                    <img src="images/menu/bibim_noodle.webp" alt="ビビンクッス" onerror="handleImageError(this)">
+                    <img src="images/menu/bibim_noodle.jpg" alt="ビビンクッス" onerror="handleImageError(this)">
                 </div>
                 <div class="menu-name-ja">ビビンクッス</div>
                 <div class="menu-name-ko">비빔국수</div>
-                <div class="menu-price">1,500</div>
+                <div class="menu-price">1,800</div>
+            </div>
+                    <!-- 비빔냉면 -->
+            <div class="menu-card">
+                <span class="badge badge-no-rice">おかず9種付き</span>
+
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/bibim_naengmyeon.jpg" alt="ビビム冷麺" onerror="handleImageError(this)">
+                </div>
+                <div class="menu-name-ja">ビビム冷麺</div>
+                <div class="menu-name-ko">비빔냉면</div>
+                <div class="menu-price">1,800</div>
+            </div>
+
+            <!-- 물냉면 -->
+            <div class="menu-card">
+                <span class="badge badge-no-rice">おかず9種付き</span>
+
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/mul_naengmyeon.jpg" alt="冷麺" onerror="handleImageError(this)">
+                </div>
+                <div class="menu-name-ja">冷麺</div>
+                <div class="menu-name-ko">물냉면</div>
+                <div class="menu-price">1,800</div>
+            </div>
+
+            <!-- 돼지불고기파스타 -->
+            <div class="menu-card">
+                <span class="badge badge-no-rice">おかず9種付き</span>
+
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/pork_bulgogi_pasta.jpg" alt="豚プルコギパスタ" onerror="handleImageError(this)">
+                </div>
+                <div class="menu-name-ja">豚プルコギパスタ</div>
+                <div class="menu-name-ko">돼지불고기파스타</div>
+                <div class="menu-price">1,800</div>
             </div>
         </div>
 
 
-        <!-- ================= 카테고리 3: 朝食限定 (아침 모닝 세트) ================= -->
+        <!-- ================= 카테고리 4: 単品 (단품 메뉴) ================= -->
+        <div class="category-wrapper">
+            <h2 class="category-title">単品<span style="font-size: 0.5em; display: block; margin-top: 5px; font-weight: normal; color: var(--text-sub);">ALL 1,200円</span></h2>
+        </div>
+
+        <div class="menu-grid">
+            <!-- 해물야채전 -->
+            <div class="menu-card">
+                <span class="badge" style="background-color: #607D8B;">単品</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/seafood_pancake.jpg" alt="海鮮野菜チヂミ" onerror="handleImageError(this)">
+                </div>
+                <div class="menu-name-ja">海鮮野菜チヂミ</div>
+                <div class="menu-name-ko">해물야채전</div>
+                <div class="menu-price">1,200</div>
+            </div>
+
+            <!-- 한국식 고기만두 -->
+            <div class="menu-card">
+                <span class="badge" style="background-color: #607D8B;">単品</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/meat_dumpling.jpg" alt="韓国肉餃子" onerror="handleImageError(this)">
+                </div>
+                <div class="menu-name-ja">韓国肉餃子</div>
+                <div class="menu-name-ko">한국식 고기만두</div>
+                <div class="menu-price">1,200</div>
+            </div>
+
+            <!-- 잡채 -->
+            <div class="menu-card">
+                <span class="badge" style="background-color: #607D8B;">単品</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/japchae.jpg" alt="チャプチェ" onerror="handleImageError(this)">
+                </div>
+                <div class="menu-name-ja">チャプチェ</div>
+                <div class="menu-name-ko">잡채</div>
+                <div class="menu-price">1,200</div>
+            </div>
+        </div>
+
+        <!-- ================= 카테고리 5: その他メニュー (기타 메뉴) ================= -->
+        <div class="category-wrapper">
+            <h2 class="category-title">その他メニュー<span style="font-size: 0.5em; display: block; margin-top: 5px; font-weight: normal; color: var(--text-sub);">ALL DAY MENU</span></h2>
+        </div>
+
+        <div class="menu-grid" style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+            <!-- コーヒーデザートセット -->
+            <div class="menu-card">
+                <span class="badge" style="background-color: #757575;">その他</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/morning_coffee_set.jpg" alt="コーヒーデザートセット（スイーツ含め）" onerror="this.onerror=null; this.src='images/menu/morning_dessert_set.jpg';">
+                </div>
+                <div class="menu-name-ja">コーヒーデザートセット（スイーツ含め）</div>
+                <div class="menu-name-ko">커피 디저트 세트</div>
+                <div class="menu-price">1,000</div>
+            </div>
+        </div>
+<!-- ================= 카테고리 3: 朝食限定 (아침 커피 디저트 세트) ================= -->
         <div class="category-wrapper">
             <h2 class="category-title">モーニング（朝食限定）<span style="font-size: 0.5em; display: block; margin-top: 5px; font-weight: normal; color: var(--text-sub);">9:00 - 11:00</span></h2>
         </div>
 
-        <div class="menu-grid">
-            <!-- 모닝 세트 -->
-            <div class="menu-card">
+        <div class="menu-grid" style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+            <!-- Morning Coffee Set 追加 -->
+            <div class="menu-card breakfast" style="width: 100%; max-width: 400px;">
                 <span class="badge" style="background-color: #8C7A6B;">朝食限定</span>
                 <div class="menu-img-placeholder">
-                    <img src="images/menu/morning_set.webp" alt="モーニングセット" onerror="this.onerror=null; this.src='images/menu/morning_set.jpg';">
+                    <img src="images/menu/morning_dessert_set.jpg" alt="モーニングコーヒーセット" onerror="this.onerror=null; this.src='images/menu/morning_coffee_set.jpg';">
                 </div>
-                <div class="menu-name-ja">モーニングセット</div>
-                <div class="menu-name-ko">모닝 세트</div>
-                <div class="menu-price">800</div>
+                <div class="menu-name-ja">モーニングコーヒーセット</div>
+                <div class="menu-name-ko">모닝 커피 세트</div>
+                <div class="menu-price">1,000</div>
             </div>
         </div>
         
         <div class="footer" id="footer">
-            <p>※ 全てのメニューに、能勢の新鮮なオーガニック野菜を使用しております。</p>
+            <p>※ 全ての食事メニューに、能勢産の無農薬・有機野菜を使用しております。</p>
             <p>© 2026 私は花. All rights reserved.</p>
         </div>
 
-        <!-- 🗺️ 모달: 오시는 길 -->
-        <div id="accessModal" class="modal-overlay">
-            <div class="modal-content">
-                <button class="modal-close" onclick="closeModal()">×</button>
-                <h3 style="margin-top: 0; color: var(--accent-green);">アクセス</h3>
-                <p style="font-weight: 600; font-size: 1.1em; margin-bottom: 5px; color: var(--text-main);">私は花</p>
-                <p style="color: var(--text-sub); margin-bottom: 15px; font-size: 0.9em;">〒563-0355 大阪府豊能郡能勢町下田１９８−１</p>
-                
-                <iframe class="modal-map" src="https://maps.google.com/maps?q=大阪府豊能郡能勢町下田１９８−１&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
-                
-                <a href="https://www.google.com/maps/search/?api=1&query=大阪府豊能郡能勢町下田１９８−１" target="_blank" class="btn-nav">
-                    📍 Google Mapsでナビを開始
-                </a>
-            </div>
-        </div>
-
     </div>
 
-    <!-- 🤖 모달: AI 비서 -->
-    <div id="aiModal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeAiModal()">×</button>
-            <h3 style="margin-top: 0; color: var(--accent-green);">🤖 AI アシスタント</h3>
-                <p style="color: var(--text-sub); font-size: 0.9em; margin-bottom: 10px;">お店について何でも聞いてください！</p>
-            <div class="ai-input-group">
-                <input type="text" placeholder="質問を入力してください..." disabled>
-                    <button onclick="alert('ただいま準備中です。')">送信</button>
-            </div>
-            <p style="color: #F4B400; font-size: 0.85em; margin-top: 20px; font-weight: bold;">※ 現在、AI機能は準備中です。</p>
-        </div>
-    </div>
-
-    <!-- 🅿️ 모달: 주차장 정보 -->
-    <div id="parkingModal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeParkingModal()">×</button>
-            <h3 style="margin-top: 0; color: #3B5998;">駐車場のご案内 </h3>
-            <p style="font-weight: 600; font-size: 1.1em; margin-bottom: 5px; color: var(--text-main);">店舗の向かい側に駐車場完備</p>
-            
-            <img src="images/parking.jpg" alt="駐車場" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border-color);" onerror="this.src='https://placehold.co/400x250/F5F2EB/2D2926?text=Parking'">
-        </div>
-    </div>
+    <div id="footer-placeholder"></div>
+    <div id="modals-placeholder"></div>
 
     <script src="common.js" defer></script>
     <!-- ⚡ 스마트한 통합 이미지 에러 핸들러 스크립트 ⚡ -->

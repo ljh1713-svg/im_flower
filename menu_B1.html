@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>私は花 (나는꽃) - B1 에디토리얼 포스터 메뉴판</title>
+<!-- Tailwind CSS & Google Fonts -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- 젊은 여성 타겟의 감성적이고 세련된 명조체(Shippori Mincho) 중심 사용 -->
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+    /* B1 규격 캔버스 (728mm x 1030mm) */
+    @page {
+        size: 728mm 1030mm;
+        margin: 0;
+    }
+    
+    body {
+        font-family: 'Shippori Mincho', serif; /* 전체 기본 폰트를 감성적인 명조체로 변경 */
+        background-color: #e8e4dc; /* 작업용 배경색 */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .mincho { font-family: 'Shippori Mincho', serif; }
+    .sans-elegant { font-family: 'Jost', sans-serif; } /* 영문/숫자용 세련된 산세리프 */
+
+    .header {
+        text-align: center;
+        padding: 24px 0 16px;
+    }
+
+    .logo-wrapper {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 16px;
+    }
+
+    .logo-img {
+        max-height: 400px;
+        width: auto;
+        display: block;
+        filter: drop-shadow(0px 4px 12px rgba(0,0,0,0.08));
+    }
+
+    .logo-text-ja {
+        position: absolute;
+        bottom: 0;
+        left: -24px;
+        font-size: 3.6em;
+        color: #FFFFFF;
+        font-family: 'Shippori Mincho', serif;
+        background-color: #4E6E35;
+        padding: 10px 24px;
+        border-radius: 8px;
+        letter-spacing: 4px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    .header-desc {
+        font-size: 2.5em;
+        color: #8C6C55;
+        margin-top: 16px;
+        letter-spacing: 2px;
+    }
+
+    /* 잡지 표지 느낌의 캔버스 본체 */
+    .poster-page {
+        width: 728mm;
+        height: 1030mm;
+        background-color: #F8F6F0; /* 따뜻하고 고급스러운 아이보리 베이퍼 컬러 */
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        padding: 15mm calc(25mm + 10px) 12mm calc(25mm + 10px); /* 상단 15, 좌우 +10px, 하단 12 */
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+
+    @media print {
+        body { background-color: #ffffff; }
+        .poster-page { box-shadow: none; margin: 0; }
+    }
+
+    /* 섬세한 라인 아트 꽃 배경 (투명도를 더 낮추고 은은하게 배치) */
+    .flower-bg-1 {
+        position: absolute;
+        top: -5%;
+        left: -5%;
+        width: 500px;
+        height: 500px;
+        opacity: 0.06;
+        transform: rotate(25deg);
+        pointer-events: none;
+        z-index: 1;
+    }
+    .flower-bg-2 {
+        position: absolute;
+        bottom: -5%;
+        right: -5%;
+        width: 600px;
+        height: 600px;
+        opacity: 0.06;
+        transform: rotate(-15deg);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    /* 에디토리얼 스타일의 섬세한 선 */
+    .divider-line {
+        height: 1px;
+        background-color: #D5C8BA;
+        width: 100%;
+        margin: 15px 0;
+    }
+
+    /* 이미지 비율을 강제 할당하여 빈 공간을 절대 허용하지 않는 매직 CSS */
+    /* 부모 flex가 할당한 공간을 꽉 채우게 absolute inset-0 사용 */
+    .image-container {
+        position: relative;
+        flex-grow: 1;
+        width: 100%;
+        border-radius: 20px;
+        overflow: hidden;
+        min-height: 300px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.06); /* 둔탁한 테두리 대신 우아한 그림자 */
+        background-color: #F8F6F0;
+    }
+    
+    .image-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center top;
+    }
+
+    /* --- index.html から流用したメニューカード用スタイル --- */
+    .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28mm 18mm;
+        margin: 0; /* B1 の余白は親で管理 */
+    }
+
+    .menu-card {
+        background: transparent;
+        border-radius: 8px;
+        padding: 0;
+        text-align: left;
+        position: relative;
+    }
+
+    .badge {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.75em;
+        font-weight: bold;
+        color: #FFFFFF;
+        z-index: 10;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .badge-rice { background-color: #4E6E35; }
+    .badge-no-rice { background-color: #B07D62; }
+
+    .menu-img-placeholder {
+        width: 100%;
+        height: 590px; /* slightly reduced to ensure full image visibility */
+        background-color: #F5F2EB;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .menu-img-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Show Japanese and Korean name on one line; hide price labels */
+    .menu-name-ja { display: inline-block; font-size: 44px; font-family: 'Shippori Mincho', serif; color: #362C26; margin: 12px 16px 12px 0; vertical-align: middle; }
+    .menu-name-ko { display: inline-block; font-size: 26px; color: #8C6C55; margin: 12px 0 12px 0; vertical-align: middle; }
+    .menu-price { display: none; }
+
+    /* store info line under header */
+    .store-info { text-align: center; color: #8C6C55; font-size: 2.0em; margin: 12px 0 24px; }
+
+    /* footer bottom spacing to improve visual breathing room */
+    .poster-page footer { padding-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<div class="poster-page">
+    
+    <!-- 배경 꽃 장식 -->
+    <svg class="flower-bg-1" viewBox="0 0 100 100" fill="none" stroke="#5A4A3E" stroke-width="1">
+        <path d="M50,15 C45,30 25,30 30,45 C35,60 50,55 50,50 C50,55 65,60 70,45 C75,30 55,30 50,15 Z" fill="#EFECE5" />
+        <path d="M50,85 C45,70 25,70 30,55 C35,40 50,45 50,50 C50,45 65,40 70,55 C75,70 55,70 50,85 Z" fill="#EFECE5" />
+        <path d="M15,50 C30,45 30,25 45,30 C60,35 55,50 50,50 C55,50 60,65 45,70 C30,75 30,55 15,50 Z" fill="#EFECE5" />
+        <path d="M85,50 C70,45 70,25 55,30 C40,35 45,50 50,50 C45,50 40,65 55,70 C70,75 70,55 85,50 Z" fill="#EFECE5" />
+        <circle cx="50" cy="50" r="4" fill="#5A4A3E" />
+    </svg>
+    <svg class="flower-bg-2" viewBox="0 0 100 100" fill="none" stroke="#5A4A3E" stroke-width="0.8">
+        <g transform="translate(50,50)">
+            <circle cx="0" cy="0" r="5" fill="#EFECE5" />
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" fill="#F8F6F0"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(45)" fill="#F8F6F0"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(90)" fill="#F8F6F0"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(135)" fill="#F8F6F0"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(180)" fill="#F8F6F0"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(225)" fill="#F8F6F0"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(270)" fill="#F8F6F0"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(315)" fill="#F8F6F0"/>
+        </g>
+    </svg>
+
+    <!-- HEADER: index.html 스타일 로고 + 텍스트 (divider removed) -->
+    <header class="z-10 header">
+        <div class="logo-wrapper">
+            <img class="logo-img" src="images/nanakkot_logo.png" alt="私は花" onerror="this.style.display='none'">
+            <div class="logo-text-ja">私は花</div>
+        </div>
+    </header>
+
+    <!-- Store one-line info (JA) -->
+    <div class="store-info">古民家で楽しむ、体に優しい韓国フュージョンダイニング</div>
+
+    <!-- MAIN MENU GRID 
+         1. flex-grow: 헤더/푸터 빼고 남은 세로 공간을 모조리 차지함
+         2. grid-rows-5: 그 공간을 정확히 5등분함 
+         3. 여백(NG) 절대 발생 안 함 -->
+    <main class="z-10 flex-grow">
+        <div class="menu-grid">
+            <!-- 1 -->
+            <div class="menu-card">
+                <span class="badge badge-rice">雑穀米＋おかず9種</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/samgyeopsal.jpg" alt="サムギョプサル定食">
+                </div>
+                <div class="menu-name-ja">サムギョプサル定食</div>
+                <div class="menu-name-ko">삼겹살 정식</div>
+                <div class="menu-price">1,800</div>
+            </div>
+
+            <!-- 2 -->
+            <div class="menu-card">
+                <span class="badge badge-rice">雑穀米＋おかず9種</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/sundubu_set.jpg" alt="スンドゥブ定食">
+                </div>
+                <div class="menu-name-ja">スンドゥブ定食</div>
+                <div class="menu-name-ko">순두부 정식</div>
+                <div class="menu-price">1,800</div>
+            </div>
+
+            <!-- 3 -->
+            <div class="menu-card">
+                <span class="badge badge-rice">雑穀米＋おかず9種</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/pork_bulgogi.jpg" alt="豚プルコギ定食">
+                </div>
+                <div class="menu-name-ja">豚プルコギ定食</div>
+                <div class="menu-name-ko">돼지 불고기 정식</div>
+                <div class="menu-price">1,800</div>
+            </div>
+
+            <!-- 4 Japchae (single location) -->
+            <div class="menu-card">
+                <span class="badge badge-rice">雑穀米＋おかず9種</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/japchae.jpg" alt="チャプチェ">
+                </div>
+                <div class="menu-name-ja">チャプチェ</div>
+                <div class="menu-name-ko">잡채</div>
+                <div class="menu-price">1,800</div>
+            </div>
+
+            <!-- 5 -->
+            <div class="menu-card">
+                <span class="badge badge-no-rice">おかず9種付き</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/bibimbap.jpg" alt="オーガニック野菜ビビンバ">
+                </div>
+                <div class="menu-name-ja">オーガニック野菜ビビンバ</div>
+                <div class="menu-name-ko">오가닉 야채 비빔밥</div>
+                <div class="menu-price">1,800</div>
+            </div>
+
+            <!-- 6 -->
+            <div class="menu-card">
+                <span class="badge badge-no-rice">おかず9種付き</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/sundubu_pasta.jpg" alt="スンドゥブパスタ">
+                </div>
+                <div class="menu-name-ja">スンドゥブパスタ</div>
+                <div class="menu-name-ko">순두부 파스타</div>
+                <div class="menu-price">1,800</div>
+            </div>
+
+            <!-- 7 -->
+            <div class="menu-card">
+                <span class="badge badge-no-rice">おかず9種付き</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/bibim_noodle.jpg" alt="ビビンクッス">
+                </div>
+                <div class="menu-name-ja">ビビンクッス</div>
+                <div class="menu-name-ko">비빔국수</div>
+                <div class="menu-price">1,800</div>
+            </div>
+
+            <!-- 8 -->
+            <div class="menu-card">
+                <span class="badge badge-no-rice">おかず9種付き</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/bibim_naengmyeon.jpg" alt="ビビム冷麺">
+                </div>
+                <div class="menu-name-ja">ビビム冷麺</div>
+                <div class="menu-name-ko">비빔냉면</div>
+                <div class="menu-price">1,800</div>
+            </div>
+
+            <!-- 9 -->
+            <div class="menu-card">
+                <span class="badge badge-no-rice">おかず9種付き</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/mul_naengmyeon.jpg" alt="冷麺">
+                </div>
+                <div class="menu-name-ja">冷麺</div>
+                <div class="menu-name-ko">물냉면</div>
+                <div class="menu-price">1,800</div>
+            </div>
+
+            <!-- 10 -->
+            <div class="menu-card">
+                <span class="badge badge-no-rice">おかず9種付き</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/pork_bulgogi_pasta.jpg" alt="豚プルコギパスタ">
+                </div>
+                <div class="menu-name-ja">豚プルコギパスタ</div>
+                <div class="menu-name-ko">돼지불고기파스타</div>
+                <div class="menu-price">1,800</div>
+            </div>
+
+            <!-- 11 (単品) -->
+            <div class="menu-card">
+                <span class="badge" style="background-color:#607D8B;">単品</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/seafood_pancake.jpg" alt="海鮮野菜チヂミ">
+                </div>
+                <div class="menu-name-ja">海鮮野菜チヂミ</div>
+                <div class="menu-name-ko">해물야채전</div>
+                <div class="menu-price">1,200</div>
+            </div>
+
+            <!-- 12 (単品) -->
+            <div class="menu-card">
+                <span class="badge" style="background-color:#607D8B;">単品</span>
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/meat_dumpling.jpg" alt="韓国肉餃子">
+                </div>
+                <div class="menu-name-ja">韓国肉餃子</div>
+                <div class="menu-name-ko">한국식 고기만두</div>
+                <div class="menu-price">1,200</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER: 심플하고 우아한 마무리 -->
+    <footer class="z-10 flex-none text-center pt-10">
+        <p class="text-[40px] text-[#8C6C55] font-medium tracking-widest">※ 全ての食事メニューに能勢産の完全無農薬オーガニック野菜を使用しております。</p>
+    </footer>
+
+</div>
+
+</body>
+</html>

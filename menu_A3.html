@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>私は花 (나는꽃) - A3 양면 메뉴판 시안</title>
+<!-- Tailwind CSS & Google Fonts -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700;800&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+    /* A3 규격 및 인쇄 설정 (세로 방향) */
+    @page {
+        size: A3 portrait;
+        margin: 0;
+    }
+    
+    body {
+        font-family: 'Zen Kaku Gothic New', sans-serif;
+        color: #2b231c;
+        background-color: #eae7e2;
+        margin: 0;
+        padding: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .mincho {
+        font-family: 'Shippori Mincho', serif;
+    }
+
+    /* 실물 인쇄 시 A3 규격을 정확히 시뮬레이션 (A3 = 297mm * 420mm) */
+    .menu-page {
+        width: 297mm;
+        height: 420mm;
+        background-color: #faf8f5;
+        position: relative;
+        overflow: hidden;
+        margin: 20px auto;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        padding: 10mm 12mm;
+        box-sizing: border-box;
+        page-break-after: always;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    @media print {
+        body {
+            background-color: #ffffff;
+        }
+        .menu-page {
+            margin: 0;
+            box-shadow: none;
+            width: 297mm;
+            height: 420mm;
+            padding: 10mm 12mm;
+        }
+    }
+
+    /* 외곽의 은은하고 기품 있는 연한 테두리만 남김 */
+    .border-outer {
+        position: absolute;
+        top: 5mm;
+        left: 5mm;
+        right: 5mm;
+        bottom: 5mm;
+        border: 1px solid #dcd3c7;
+        pointer-events: none;
+        z-index: 5;
+    }
+
+    /* 은은하게 깔리는 한국 전통 꽃 일러스트 (매화/국화 형상) */
+    .flower-bg-1 {
+        position: absolute;
+        top: 4%;
+        left: -3%;
+        width: 240px;
+        height: 240px;
+        opacity: 0.12;
+        transform: rotate(15deg);
+        pointer-events: none;
+        z-index: 1;
+    }
+    .flower-bg-2 {
+        position: absolute;
+        bottom: 6%;
+        right: -3%;
+        width: 280px;
+        height: 280px;
+        opacity: 0.14;
+        transform: rotate(-35deg);
+        pointer-events: none;
+        z-index: 1;
+    }
+    .flower-bg-center {
+        position: absolute;
+        top: 52%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 420px;
+        height: 420px;
+        opacity: 0.04;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    /* 타이틀 및 섹션 디자인 */
+    .title-badge {
+        background-color: #4c311c;
+        color: #ffffff;
+        padding: 10px 40px;
+        border-radius: 9999px;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        display: inline-block;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+    }
+
+    /* 대형 가격 디자인 */
+    .price-tag {
+        font-size: 2.1rem;
+        font-weight: 900;
+        color: #a33b19;
+        font-family: 'Zen Kaku Gothic New', sans-serif;
+    }
+</style>
+</head>
+<body>
+
+<!-- ==================== FRONT PAGE: 정식 및 식사류 전체 ==================== -->
+<div class="menu-page">
+    <div class="border-outer"></div>
+    
+    <!-- 꽃 배경 일러스트 (SVG) -->
+    <svg class="flower-bg-1" viewBox="0 0 100 100" fill="none" stroke="#8c7355" stroke-width="1.5">
+        <path d="M50,15 C45,30 25,30 30,45 C35,60 50,55 50,50 C50,55 65,60 70,45 C75,30 55,30 50,15 Z" fill="#f7ebe1" />
+        <path d="M50,85 C45,70 25,70 30,55 C35,40 50,45 50,50 C50,45 65,40 70,55 C75,70 55,70 50,85 Z" fill="#f7ebe1" />
+        <path d="M15,50 C30,45 30,25 45,30 C60,35 55,50 50,50 C55,50 60,65 45,70 C30,75 30,55 15,50 Z" fill="#f7ebe1" />
+        <path d="M85,50 C70,45 70,25 55,30 C40,35 45,50 50,50 C45,50 40,65 55,70 C70,75 70,55 85,50 Z" fill="#f7ebe1" />
+        <circle cx="50" cy="50" r="5" fill="#8c7355" />
+    </svg>
+    <svg class="flower-bg-center" viewBox="0 0 100 100" fill="none" stroke="#8c7355" stroke-width="0.8">
+        <g transform="translate(50,50)">
+            <circle cx="0" cy="0" r="6" fill="#fcf8f2" />
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" fill="#fdfaf6"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(45)" fill="#fdfaf6"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(90)" fill="#fdfaf6"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(135)" fill="#fdfaf6"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(180)" fill="#fdfaf6"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(225)" fill="#fdfaf6"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(270)" fill="#fdfaf6"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(315)" fill="#fdfaf6"/>
+        </g>
+    </svg>
+
+    <!-- BRANDING HEADER -->
+    <div class="z-10 flex justify-between items-center border-b-2 border-[#8c7355]/40 pb-3 mb-3 px-4">
+        <div class="flex items-center gap-5">
+            <img class="h-[52px]" src="images/nanakkot_logo.png" alt="私は花" onerror="this.style.display='none'">
+            <span class="text-4xl font-black mincho text-[#4c311c] tracking-widest">私は花</span>
+            <span class="text-xs text-[#8c7355] font-extrabold border-l border-[#8c7355]/40 pl-4">古民家で楽しむ、体に優しい韓国フュージョンダイニング</span>
+        </div>
+        <!-- 우측 배너 라벨 -->
+        <div class="border-2 border-[#a33b19] text-[#a33b19] px-7 py-2 rounded-xl text-xl font-black tracking-widest mincho bg-[#fdf5ee] shadow-sm">
+            定食セット
+        </div>
+    </div>
+
+    <!-- VISUAL ORDERING GUIDE (주문 안내 타이틀 배너를 테두리 선 위로 깔끔하게 올림) -->
+    <div class="z-10 bg-[#fbf5ee] border-2 border-[#8c7355] rounded-2xl p-5 mx-4 mb-4 shadow-sm relative">
+        <div class="absolute -top-[20px] left-8 bg-[#8c7355] text-white text-[15px] font-black px-6 py-1.5 rounded-full tracking-wider shadow-sm">
+            定食セットのご注文方法
+        </div>
+        
+        <div class="grid grid-cols-12 gap-4 items-center mt-2">
+            <!-- Left Card -->
+            <div class="col-span-8 flex flex-col gap-2.5">
+                <div class="text-base font-black text-[#5a3e2b] text-center bg-[#f0e4d7] py-1.5 rounded-md w-full whitespace-nowrap">① 全てのお食事に付く「基本セット」</div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex gap-4 items-center bg-white p-3 rounded-xl border border-[#ebdcd0] shadow-sm">
+                        <img class="w-[150px] h-[120px] object-cover rounded border-2 border-[#ebdcd0] flex-shrink-0" src="images/menu/banchan_9set.jpg" alt="おかず9種">
+                        <div>
+                            <h5 class="text-[13px] font-black text-[#4c311c] leading-tight">日替わりおかず9種</h5>
+                            <p class="text-[10px] text-[#7a6a58] leading-tight font-extrabold mt-1">能勢の有機野菜を毎日手作りでご提供。</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-center bg-white p-3 rounded-xl border border-[#ebdcd0] shadow-sm">
+                        <img class="w-[150px] h-[120px] object-cover rounded border-2 border-[#ebdcd0] flex-shrink-0" src="images/menu/rice_mixed.jpg" alt="こだわり雑穀米">
+                        <div>
+                            <h5 class="text-[13px] font-black text-[#4c311c] leading-tight">こだわり雑穀米</h5>
+                            <p class="text-[10px] text-[#7a6a58] leading-tight font-extrabold mt-1">※麺・ビビンバを除く</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Center Connector: PLUS SIGN -->
+            <div class="col-span-1 flex flex-col items-center justify-center">
+                <div class="w-12 h-12 rounded-full bg-[#a33b19] flex items-center justify-center text-white text-3xl font-black shadow-md border-2 border-white">
+                    ＋
+                </div>
+            </div>
+            
+            <!-- Right Card: Instruction -->
+            <div class="col-span-3 flex flex-col gap-2.5 h-full justify-between">
+                <div class="text-sm font-black text-white text-center bg-[#a33b19] py-1.5 rounded-md block whitespace-nowrap">② メインを１つ選択</div>
+                <div class="bg-white px-2 py-4 rounded-xl border-2 border-dashed border-[#a33b19] flex flex-col justify-center items-center flex-grow text-center">
+                    <p class="text-[13px] font-black text-[#2b231c] leading-tight">下記の料理から</p>
+                    <p class="text-[16px] font-black text-[#a33b19] mt-2 leading-none whitespace-nowrap">お好きなものを【1品】選択</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 1: SET MEALS -->
+    <div class="z-10 px-4 mb-2">
+        <div class="text-center mb-2.5">
+            <span class="title-badge mincho text-xl bg-[#5a3e2b]">お食事（こだわり雑穀米付き） </span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+            <!-- Samgyeopsal -->
+            <div class="bg-white border-2 border-[#ebdcd0] rounded-2xl p-3 flex gap-4 shadow-sm hover:shadow-md transition">
+                <img class="w-[190px] h-[135px] object-cover rounded-xl border border-[#ebdcd0] flex-shrink-0" src="images/menu/samgyeopsal.jpg" alt="サムギョプサル">
+                <div class="flex flex-col justify-between flex-grow py-1">
+                    <div>
+                        <h3 class="text-2xl font-black text-[#2b231c] mincho tracking-tight leading-none">サムギョプサル定食</h3>
+                        <p class="text-xs text-[#8c7355] font-black italic mt-1">삼겹살 정식</p>
+                        <p class="text-[13px] text-[#554a3e] font-bold leading-normal mt-2">ジューシーに香ばしく焼き上げた、旨味たっぷりの王道豚バラ肉定食。</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-[11px] text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded font-black border border-emerald-200">ご飯付き</span>
+                        <div class="price-tag leading-none">1,800<span class="text-sm text-[#8c7355] font-black">円</span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sundubu -->
+            <div class="bg-white border-2 border-[#ebdcd0] rounded-2xl p-3 flex gap-4 shadow-sm hover:shadow-md transition">
+                <img class="w-[190px] h-[135px] object-cover rounded-xl border border-[#ebdcd0] flex-shrink-0" src="images/menu/sundubu_set.jpg" alt="スンドゥブ">
+                <div class="flex flex-col justify-between flex-grow py-1">
+                    <div>
+                        <h3 class="text-2xl font-black text-[#2b231c] mincho tracking-tight leading-none">スンドゥブ定食</h3>
+                        <p class="text-xs text-[#8c7355] font-black italic mt-1">순두부 정식</p>
+                        <p class="text-[13px] text-[#554a3e] font-bold leading-normal mt-2">魚介の旨味が凝縮されたピリ辛スープと、なめらか豆腐の定番人気メニュー。</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-[11px] text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded font-black border border-emerald-200">ご飯付き</span>
+                        <div class="price-tag leading-none">1,800<span class="text-sm text-[#8c7355] font-black">円</span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pork Bulgogi -->
+            <div class="bg-white border-2 border-[#ebdcd0] rounded-2xl p-3 flex gap-4 shadow-sm hover:shadow-md transition">
+                <img class="w-[190px] h-[135px] object-cover rounded-xl border border-[#ebdcd0] flex-shrink-0" src="images/menu/pork_bulgogi.jpg" alt="豚プルコギ">
+                <div class="flex flex-col justify-between flex-grow py-1">
+                    <div>
+                        <h3 class="text-2xl font-black text-[#2b231c] mincho tracking-tight leading-none">豚プルコギ定食</h3>
+                        <p class="text-xs text-[#8c7355] font-black italic mt-1">돼지 불고기 정식</p>
+                        <p class="text-[13px] text-[#554a3e] font-bold leading-normal mt-2">特製甘辛醤油ダレにじっくり漬け込んだ、柔らかい極上豚肉炒め。</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-[11px] text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded font-black border border-emerald-200">ご飯付き</span>
+                        <div class="price-tag leading-none">1,800<span class="text-sm text-[#8c7355] font-black">円</span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Japchae Set -->
+            <div class="bg-white border-2 border-[#ebdcd0] rounded-2xl p-3 flex gap-4 shadow-sm hover:shadow-md transition">
+                <img class="w-[190px] h-[135px] object-cover rounded-xl border border-[#ebdcd0] flex-shrink-0" src="images/menu/japchae.jpg" alt="チャプチェ">
+                <div class="flex flex-col justify-between flex-grow py-1">
+                    <div>
+                        <h3 class="text-2xl font-black text-[#2b231c] mincho tracking-tight leading-none">チャプチェ定食</h3>
+                        <p class="text-xs text-[#8c7355] font-black italic mt-1">잡채 정식</p>
+                        <p class="text-[13px] text-[#554a3e] font-bold leading-normal mt-2">モチモチの韓国春雨と、能勢の新鮮な旬野菜をごま油で炒めた一品。</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-[11px] text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded font-black border border-emerald-200">ご飯付き</span>
+                        <div class="price-tag leading-none">1,800<span class="text-sm text-[#8c7355] font-black">円</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: NOODLES & BIBIMBAP -->
+    <div class="z-10 px-4">
+        <div class="text-center mb-2.5">
+            <span class="title-badge mincho text-xl bg-[#634b35]">麺類・ビビンバ（こだわり雑穀米なし） </span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+            <!-- Bibimbap -->
+            <div class="bg-white border-2 border-[#ebdcd0] rounded-2xl p-3 flex gap-4 shadow-sm hover:shadow-md transition">
+                <img class="w-[190px] h-[135px] object-cover rounded-xl border border-[#ebdcd0] flex-shrink-0" src="images/menu/bibimbap.jpg" alt="ビビンバ">
+                <div class="flex flex-col justify-between flex-grow py-1">
+                    <div>
+                        <h3 class="text-xl font-black text-[#2b231c] mincho tracking-tight leading-none">オーガニック野菜ビビンバ</h3>
+                        <p class="text-xs text-[#8c7355] font-black italic mt-1">오가닉 야채 비빔밥</p>
+                        <p class="text-[13px] text-[#554a3e] font-bold leading-normal mt-2">能勢の新鮮ナムルをたっぷりのせ、特製ダレでヘルシーに味わう人気メニュー。</p>
+                    </div>
+                    <div class="text-right price-tag leading-none">1,800<span class="text-sm text-[#8c7355] font-black">円</span></div>
+                </div>
+            </div>
+            <!-- Sundubu Pasta -->
+            <div class="bg-white border-2 border-[#ebdcd0] rounded-2xl p-3 flex gap-4 shadow-sm hover:shadow-md transition">
+                <img class="w-[190px] h-[135px] object-cover rounded-xl border border-[#ebdcd0] flex-shrink-0" src="images/menu/sundubu_pasta.jpg" alt="スンドゥブパスタ">
+                <div class="flex flex-col justify-between flex-grow py-1">
+                    <div>
+                        <h3 class="text-2xl font-black text-[#2b231c] mincho tracking-tight leading-none">スンドゥブパスタ</h3>
+                        <p class="text-xs text-[#8c7355] font-black italic mt-1">순두부 파스타</p>
+                        <p class="text-[13px] text-[#554a3e] font-bold leading-normal mt-2">旨辛のスンドゥブ特製スープとパスタ麺が美しく融合した創作料理。</p>
+                    </div>
+                    <div class="text-right price-tag leading-none">1,800<span class="text-sm text-[#8c7355] font-black">円</span></div>
+                </div>
+            </div>
+            <!-- Bibim Noodle -->
+            <div class="bg-white border-2 border-[#ebdcd0] rounded-2xl p-3 flex gap-4 shadow-sm hover:shadow-md transition">
+                <img class="w-[190px] h-[135px] object-cover rounded-xl border border-[#ebdcd0] flex-shrink-0" src="images/menu/bibim_noodle.jpg" alt="ビビンクッス">
+                <div class="flex flex-col justify-between flex-grow py-1">
+                    <div>
+                        <h3 class="text-2xl font-black text-[#2b231c] mincho tracking-tight leading-none">ビビンクッス</h3>
+                        <p class="text-xs text-[#8c7355] font-black italic mt-1">비빔국수</p>
+                        <p class="text-[13px] text-[#554a3e] font-bold leading-normal mt-2">甘酸っぱくピリッと辛い特製ダレを、つるつるのそうめんに絡めていただく絶品麺。</p>
+                    </div>
+                    <div class="text-right price-tag leading-none">1,800<span class="text-sm text-[#8c7355] font-black">円</span></div>
+                </div>
+            </div>
+            <!-- Bibim Naengmyeon -->
+            <div class="bg-white border-2 border-[#ebdcd0] rounded-2xl p-3 flex gap-4 shadow-sm hover:shadow-md transition">
+                <img class="w-[190px] h-[135px] object-cover rounded-xl border border-[#ebdcd0] flex-shrink-0" src="images/menu/bibim_naengmyeon.jpg" alt="ビビム冷麺">
+                <div class="flex flex-col justify-between flex-grow py-1">
+                    <div>
+                        <h3 class="text-2xl font-black text-[#2b231c] mincho tracking-tight leading-none">ビビム冷麺</h3>
+                        <p class="text-xs text-[#8c7355] font-black italic mt-1">비빔냉면</p>
+                        <p class="text-[13px] text-[#554a3e] font-bold leading-normal mt-2">しっかりとした強いコシの極細麺に、秘伝の旨辛ダレを絡めた冷麺。</p>
+                    </div>
+                    <div class="text-right price-tag leading-none">1,800<span class="text-sm text-[#8c7355] font-black">円</span></div>
+                </div>
+            </div>
+            <!-- Mul Naengmyeon -->
+            <div class="bg-white border-2 border-[#ebdcd0] rounded-2xl p-3 flex gap-4 shadow-sm hover:shadow-md transition">
+                <img class="w-[190px] h-[135px] object-cover rounded-xl border border-[#ebdcd0] flex-shrink-0" src="images/menu/mul_naengmyeon.jpg" alt="冷麺">
+                <div class="flex flex-col justify-between flex-grow py-1">
+                    <div>
+                        <h3 class="text-2xl font-black text-[#2b231c] mincho tracking-tight leading-none">冷麺</h3>
+                        <p class="text-xs text-[#8c7355] font-black italic mt-1">물냉면</p>
+                        <p class="text-[13px] text-[#554a3e] font-bold leading-normal mt-2">冷たい大根の甘酢スープが喉をすっきりと潤す、さっぱりとした味わいの伝統水冷麺。</p>
+                    </div>
+                    <div class="text-right price-tag leading-none">1,800<span class="text-sm text-[#8c7355] font-black">円</span></div>
+                </div>
+            </div>
+            <!-- Pork Bulgogi Pasta -->
+            <div class="bg-white border-2 border-[#ebdcd0] rounded-2xl p-3 flex gap-4 shadow-sm hover:shadow-md transition">
+                <img class="w-[190px] h-[135px] object-cover rounded-xl border border-[#ebdcd0] flex-shrink-0" src="images/menu/pork_bulgogi_pasta.jpg" alt="豚プルコギパスタ">
+                <div class="flex flex-col justify-between flex-grow py-1">
+                    <div>
+                        <h3 class="text-2xl font-black text-[#2b231c] mincho tracking-tight leading-none">豚プルコギパスタ</h3>
+                        <p class="text-xs text-[#8c7355] font-black italic mt-1">돼지불고기파스타</p>
+                        <p class="text-[13px] text-[#554a3e] font-bold leading-normal mt-2">甘辛い豚プルコギと、もちもちのパスタ麺が絶妙なハーモニーを奏でる創作パスタ。</p>
+                    </div>
+                    <div class="text-right price-tag leading-none">1,800<span class="text-sm text-[#8c7355] font-black">円</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER INFO -->
+    <div class="z-10 text-center text-xs text-[#8c7355] border-t border-[#dcd3c7] pt-2 mt-4">
+        <p class="font-bold">※ 全ての食事メニューに能勢産の完全無農薬オーガニック野菜を使用しております。</p>
+        <p class="font-bold mincho text-[#4c311c] mt-0.5 text-[13px]">古民家韓国フュージョンダイニング 私は花</p>
+    </div>
+</div>
+
+
+<!-- ==================== BACK PAGE: 단품, 모닝 세트, 음료 ==================== -->
+<div class="menu-page">
+    <div class="border-outer"></div>
+
+    <!-- 국화 형상 (우상단 은은하게) -->
+    <svg class="flower-bg-2" viewBox="0 0 100 100" fill="none" stroke="#8c7355" stroke-width="1.2">
+        <g transform="translate(50,50)">
+            <circle cx="0" cy="0" r="7" fill="#eae0d5" />
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" fill="#fdfaf6"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(45)" fill="#fdfaf6"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(90)" fill="#fdfaf6"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(135)" fill="#fdfaf6"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(180)" fill="#fdfaf6"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(225)" fill="#fdfaf6"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(270)" fill="#fdfaf6"/>
+            <path d="M0,0 C-8,-15 0,-30 0,-30 C0,-30 8,-15 0,0 Z" transform="rotate(315)" fill="#fdfaf6"/>
+        </g>
+    </svg>
+
+    <!-- COMPACT BRANDING HEADER BACK -->
+    <div class="z-10 flex justify-between items-center border-b-2 border-[#8c7355]/40 pb-3 mb-5 px-4">
+        <div class="flex items-center gap-5">
+            <img class="h-[52px]" src="images/nanakkot_logo.png" alt="私は花" onerror="this.style.display='none'">
+            <span class="text-4xl font-black mincho text-[#4c311c] tracking-widest">私は花</span>
+            <span class="text-xs text-[#8c7355] font-extrabold border-l border-[#8c7355]/40 pl-4">古民家で楽しむ、体に優しい韓国フュージョンダイニング</span>
+        </div>
+        <!-- 우측 배너 라벨 -->
+        <div class="border-2 border-[#a33b19] text-[#a33b19] px-7 py-2 rounded-xl text-xl font-black tracking-widest mincho bg-[#fdf5ee] shadow-sm">
+            単品・モーニング・ドリンク
+        </div>
+    </div>
+
+    <!-- COLUMN LAYOUT -->
+    <div class="z-10 px-4 grid grid-cols-12 gap-8 flex-grow">
+        
+        <!-- LEFT SIDE (Single Dishes & Morning Set) -->
+        <div class="col-span-7 flex flex-col justify-between h-full">
+            
+            <!-- Single Dishes Section -->
+            <div class="flex-grow">
+                <div class="text-left mb-4">
+                    <span class="text-2xl font-black text-[#4c311c] border-b-2 border-[#8c7355] pb-1.5 tracking-wider mincho">単品メニュー</span>
+                    <p class="text-sm text-[#8c7355] mt-2 font-bold">お食事にも、お酒のお供にもぴったりな定番の単品料理。</p>
+                </div>
+                
+                <div class="flex flex-col gap-4">
+                    <!-- Pancake -->
+                    <div class="bg-white border-2 border-[#ebdcd0] rounded-2xl p-4 flex gap-5 shadow-sm hover:shadow-md transition">
+                        <img class="w-[210px] h-[145px] object-cover rounded-xl border border-[#ebdcd0] flex-shrink-0" src="images/menu/seafood_pancake.jpg" alt="海鮮野菜チヂミ">
+                        <div class="flex flex-col justify-between flex-grow py-1">
+                            <div>
+                                <h4 class="text-2xl font-black text-[#2b231c] mincho leading-none">海鮮野菜チヂミ</h4>
+                                <p class="text-xs text-[#8c7355] font-black italic mt-1.5">해물야채전</p>
+                                <p class="text-[14px] text-[#6d5b4a] font-bold mt-3 leading-snug">外はカリッと、中はもちもちに焼き上げた具沢山な極上海鮮チヂミ。</p>
+                            </div>
+                            <div class="text-right price-tag leading-none">1,200円<span class="text-xs text-[#8c7355] font-black">（税込）</span></div>
+                        </div>
+                    </div>
+                    <!-- Dumpling -->
+                    <div class="bg-white border-2 border-[#ebdcd0] rounded-2xl p-4 flex gap-5 shadow-sm hover:shadow-md transition">
+                        <img class="w-[210px] h-[145px] object-cover rounded-xl border border-[#ebdcd0] flex-shrink-0" src="images/menu/meat_dumpling.jpg" alt="韓国肉餃子">
+                        <div class="flex flex-col justify-between flex-grow py-1">
+                            <div>
+                                <h4 class="text-2xl font-black text-[#2b231c] mincho leading-none">韓国肉餃子</h4>
+                                <p class="text-xs text-[#8c7355] font-black italic mt-1.5">한국식 고기만두</p>
+                                <p class="text-[14px] text-[#6d5b4a] font-bold mt-3 leading-snug">一気に溢れるジューシーな肉汁と、具がぎっしり詰まった逸品。</p>
+                            </div>
+                            <div class="text-right price-tag leading-none">1,200円<span class="text-xs text-[#8c7355] font-black">（税込）</span></div>
+                        </div>
+                    </div>
+                    <!-- Japchae Single -->
+                    <div class="bg-white border-2 border-[#ebdcd0] rounded-2xl p-4 flex gap-5 shadow-sm hover:shadow-md transition">
+                        <img class="w-[210px] h-[145px] object-cover rounded-xl border border-[#ebdcd0] flex-shrink-0" src="images/menu/japchae.jpg" alt="チャプチェ単品">
+                        <div class="flex flex-col justify-between flex-grow py-1">
+                            <div>
+                                <h4 class="text-2xl font-black text-[#2b231c] mincho leading-none">チャプチェ</h4>
+                                <p class="text-xs text-[#8c7355] font-black italic mt-1.5">잡채</p>
+                                <p class="text-[14px] text-[#6d5b4a] font-bold mt-3 leading-snug">高級ごま油で風味豊かに仕上げた極上チャプチェ。大満足の単品料理としてご提供。</p>
+                            </div>
+                            <div class="text-right price-tag leading-none">1,200円<span class="text-xs text-[#8c7355] font-black">（税込）</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Menu Section -->
+            <div class="mt-5 pt-5 border-t-2 border-dashed border-[#ebdcd0]">
+                <div class="text-left mb-3">
+                    <span class="text-2xl font-black text-[#4c311c] border-b-2 border-[#8c7355] pb-1.5 tracking-wider mincho">その他メニュー</span>
+                    <p class="text-sm text-[#8c7355] mt-2 font-bold">営業時間中いつでもご注文いただけます。</p>
+                </div>
+                <div class="bg-[#fcf8f2] border-2 border-[#8c7355]/30 rounded-2xl p-4 flex gap-5 shadow-sm">
+                    <img class="w-[210px] h-[145px] object-cover rounded-xl border border-[#ebdcd0] flex-shrink-0" src="images/menu/morning_coffee_set.jpg" alt="コーヒーデザートセット">
+                    <div class="flex flex-col justify-between flex-grow py-1">
+                        <div>
+                            <h4 class="text-2xl font-black text-[#2b231c] mincho leading-none">コーヒーデザートセット</h4>
+                            <p class="text-xs text-[#8c7355] font-black italic mt-1.5">커피 디저트 세트</p>
+                            <p class="text-[14px] text-[#6d5b4a] font-bold mt-3 leading-relaxed">上品な韓国伝統スイーツと、香り高い珈琲を楽しむ贅沢なオールデーセット。</p>
+                        </div>
+                        <div class="text-right price-tag leading-none mt-2">1,000円<span class="text-xs text-[#8c7355] font-black">（税込）</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Morning Set Section -->
+            <div class="mt-5 pt-5 border-t-2 border-dashed border-[#ebdcd0]">
+                <div class="text-left mb-3">
+                    <span class="text-2xl font-black text-[#4c311c] border-b-2 border-[#8c7355] pb-1.5 tracking-wider mincho">モーニング（朝食限定 9:00 - 11:00）</span>
+                    <p class="text-sm text-[#8c7355] mt-2 font-bold">朝のひとときに、軽めのセットとコーヒー・デザートでゆったりどうぞ。</p>
+                </div>
+                <div class="bg-[#fcf8f2] border-2 border-[#8c7355]/30 rounded-2xl p-4 flex gap-5 shadow-sm mt-4">
+                    <img class="w-[210px] h-[200px] object-cover rounded-xl border border-[#ebdcd0] flex-shrink-0" src="images/menu/morning_dessert_set.jpg" alt="モーニングコーヒーセット">
+                    <div class="flex flex-col justify-between flex-grow py-1">
+                        <div>
+                            <h4 class="text-2xl font-black text-[#2b231c] mincho leading-none">モーニングコーヒーセット</h4>
+                            <p class="text-xs text-[#8c7355] font-black italic mt-1.5">모닝 커피 세트</p>
+                            <p class="text-[14px] text-[#6d5b4a] font-bold mt-3 leading-relaxed">香り高い珈琲を楽しむ贅沢な朝セット。</p>
+                        </div>
+                        <div class="text-right price-tag leading-none mt-2">1,000円<span class="text-xs text-[#8c7355] font-black">（税込）</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE (Drinks Menu) -->
+        <div class="col-span-5 bg-[#faf5ef] border-2 border-[#ebdcd0] rounded-2xl p-6 flex flex-col justify-between shadow-sm">
+            <div>
+                <h3 class="text-center text-2xl font-black text-white bg-[#7a6a58] py-2.5 rounded-lg mb-5 tracking-widest mincho shadow-sm">
+                    お飲み物 (DRINKS)
+                </h3>
+                
+                <!-- Drink (Alcohol) -->
+                <div class="mb-5">
+                    <h4 class="font-extrabold text-[#5c2c16] border-b-2 border-[#8c7355]/40 pb-2 mb-3 mincho text-lg flex items-center gap-2">
+                        アルコール
+                    </h4>
+                    <ul class="space-y-2.5 text-[17px] text-[#4c3e31] px-1 font-bold">
+                        <li class="flex justify-between"><span>生ビール</span><span class="font-extrabold text-[#a33b19] text-[20px]">600円</span></li>
+                        <li class="flex justify-between"><span>ワイン(グラス) 赤/白</span><span class="font-extrabold text-[#a33b19] text-[20px]">700円</span></li>
+                        <li class="flex justify-between"><span>ハイボール</span><span class="font-extrabold text-[#a33b19] text-[20px]">700円</span></li>
+                        <li class="flex justify-between"><span>瓶ビール</span><span class="font-extrabold text-[#a33b19] text-[20px]">700円</span></li>
+                        <li class="flex justify-between"><span>焼酎(麦/芋)</span><span class="font-extrabold text-[#a33b19] text-[20px]">700円</span></li>
+                        <li class="flex justify-between"><span>ノンアルコール(ボトル)</span><span class="font-extrabold text-[#a33b19] text-[20px]">700円</span></li>
+                        <li class="flex justify-between"><span>チャミスル</span><span class="font-extrabold text-[#a33b19] text-[20px]">1,500円</span></li>
+                        <li class="flex justify-between"><span>マッコリ(ボトル)</span><span class="font-extrabold text-[#a33b19] text-[20px]">1,500円</span></li>
+                        <li class="flex justify-between"><span>ワイン（ボトル）白／赤</span><span class="font-extrabold text-[#a33b19] text-[20px]">4,500円</span></li>
+                    </ul>
+                </div>
+
+                <!-- Soft Drink -->
+                <div class="mb-2">
+                    <h4 class="font-extrabold text-[#5c2c16] border-b-2 border-[#8c7355]/40 pb-2 mb-3 mincho text-lg flex items-center gap-2">
+                        ソフトドリンク
+                    </h4>
+                    <ul class="space-y-2.5 text-[17px] text-[#4c3e31] px-1 font-bold">
+                        <li class="flex justify-between"><span>コーヒー (ICE/HOT)</span><span class="font-extrabold text-[#a33b19] text-[20px]">550円</span></li>
+                        <li class="flex justify-between"><span>コーラ</span><span class="font-extrabold text-[#a33b19] text-[20px]">550円</span></li>
+                        <li class="flex justify-between"><span>ウーロン茶</span><span class="font-extrabold text-[#a33b19] text-[20px]">550円</span></li>
+                        <li class="flex justify-between"><span>レモンティー</span><span class="font-extrabold text-[#a33b19] text-[20px]">650円</span></li>
+                        <li class="flex justify-between"><span>紅茶</span><span class="font-extrabold text-[#a33b19] text-[20px]">650円</span></li>
+                        <li class="flex justify-between"><span>ゆず茶</span><span class="font-extrabold text-[#a33b19] text-[20px]">650円</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 미니 꽃 일러스트 장식 -->
+            <div class="flex justify-center opacity-60 mt-6 relative z-20">
+                <svg width="45" height="45" viewBox="0 0 100 100" fill="none" stroke="#8c7355" stroke-width="1.5">
+                    <circle cx="50" cy="50" r="10" fill="#eae0d5" />
+                    <path d="M50,10 C40,25 20,25 25,40 C30,55 50,50 50,50 C50,50 70,55 75,40 C80,25 60,25 50,10 Z" fill="#fdfaf6"/>
+                    <path d="M50,90 C40,75 20,75 25,60 C30,45 50,50 50,50 C50,50 70,45 75,60 C80,75 60,75 50,90 Z" fill="#fdfaf6"/>
+                </svg>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER INFO BACK -->
+    <div class="z-10 text-center text-xs text-[#8c7355] border-t border-[#dcd3c7] pt-4 mt-6">
+        <p class="font-bold">※ 全てのメニューに能勢産の完全無農薬オーガニック野菜を使用しております。</p>
+        <p class="font-bold mincho text-[#4c311c] mt-1 text-[13px]">古民家韓国フュージョンダイニング 私は花</p>
+    </div>
+</div>
+
+</body>
+</html>
