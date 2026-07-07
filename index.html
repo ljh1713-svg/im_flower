@@ -372,7 +372,7 @@
     <!-- 🧭 네비게이션 바 -->
     <nav class="navbar">
         <div class="nav-top">
-            <button class="ai-btn" onclick="openAiModal()">🤖 AI アシスタント</button>
+
             <div style="display: flex; gap: 10px; align-items: center;">
                 <div id="business-status" class="status-badge">状態確認中...</div>
                 <button class="parking-btn" onclick="openParkingModal()">P</button>
@@ -512,6 +512,17 @@
                 <div class="menu-name-ko">잡채</div>
                 <div class="menu-price">1,800</div>
             </div>
+            <!-- 오가닉 야채 비빔밥 -->
+            <div class="menu-card">
+                <span class="badge badge-rice">雑穀米＋おかず9種</span>
+
+                <div class="menu-img-placeholder">
+                    <img src="images/menu/bibimbap.jpg" alt="オーガニック野菜ビビンバ" onerror="handleImageError(this)">
+                </div>
+                <div class="menu-name-ja">オーガニック野菜ビビンバ</div>
+                <div class="menu-name-ko">오가닉 야채 비빔밥</div>
+                <div class="menu-price">1,800</div>
+            </div>
         </div>
 
 
@@ -521,17 +532,7 @@
         </div>
 
         <div class="menu-grid">
-            <!-- 오가닉 야채 비빔밥 -->
-            <div class="menu-card">
-                <span class="badge badge-no-rice">おかず9種付き</span>
 
-                <div class="menu-img-placeholder">
-                    <img src="images/menu/bibimbap.jpg" alt="オーガニック野菜ビビンバ" onerror="handleImageError(this)">
-                </div>
-                <div class="menu-name-ja">オーガニック野菜ビビンバ</div>
-                <div class="menu-name-ko">오가닉 야채 비빔밥</div>
-                <div class="menu-price">1,800</div>
-            </div>
 
             <!-- 순두부 파스타 -->
             <div class="menu-card">
@@ -649,7 +650,7 @@
                 <div class="menu-name-ja">コーヒーデザートセット（スイーツ含め）</div>
                 <div class="menu-name-ko">커피 디저트 세트</div>
                 <div class="menu-price">1,000</div>
-            </div>
+            </div> 
         </div>
 <!-- ================= 카테고리 3: 朝食限定 (아침 커피 디저트 세트) ================= -->
         <div class="category-wrapper">
