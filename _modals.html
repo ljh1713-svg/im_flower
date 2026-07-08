@@ -1,7 +1,7 @@
 <!-- 🗺️ モーダル: アクセス -->
 <div id="accessModal" class="modal-overlay">
     <div class="modal-content">
-        <button class="modal-close" onclick="closeModal()">×</button>
+        <button class="modal-close" onclick="closeModal('accessModal')">×</button>
         <h3 style="margin-top: 0; color: var(--accent-green);">アクセス</h3>
         <p style="font-weight: 600; font-size: 1.1em; margin-bottom: 5px; color: var(--text-main);">私は花</p>
         <p style="color: var(--text-sub); margin-bottom: 15px; font-size: 0.9em;">〒563-0355 大阪府豊能郡能勢町下田１９８−１</p>
@@ -13,7 +13,7 @@
 <!-- 🤖 モーダル: AI アシスタント -->
 <div id="aiModal" class="modal-overlay">
     <div class="modal-content">
-        <button class="modal-close" onclick="closeAiModal()">×</button>
+        <button class="modal-close" onclick="closeModal('aiModal')">×</button>
         <h3 style="margin-top: 0; color: var(--accent-green);">🤖 AI アシスタント</h3>
         <p style="color: var(--text-sub); font-size: 0.9em; margin-bottom: 10px;">お店について何でも聞いてください！</p>
         <div class="ai-input-group">
@@ -27,7 +27,7 @@
 <!-- 🅿️ モーダル: 駐車場情報 -->
 <div id="parkingModal" class="modal-overlay">
     <div class="modal-content">
-        <button class="modal-close" onclick="closeParkingModal()">×</button>
+        <button class="modal-close" onclick="closeModal('parkingModal')">×</button>
         <h3 style="margin-top: 0; color: #3B5998;">駐車場のご案内</h3>
         <p style="font-weight: 600; font-size: 1.1em; margin-bottom: 5px; color: var(--text-main);">店舗の向かい側に駐車場完備</p>
         <img src="images/parking.jpg" alt="駐車場" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border-color);" onerror="this.src='https://placehold.co/400x250/F5F2EB/2D2926?text=Parking'">

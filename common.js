@@ -1,15 +1,26 @@
-// Common modal functions
-function openModal() { document.getElementById('accessModal').style.display = 'flex'; }
-function closeModal() { document.getElementById('accessModal').style.display = 'none'; }
-function openAiModal() { document.getElementById('aiModal').style.display = 'flex'; }
-function closeAiModal() { document.getElementById('aiModal').style.display = 'none'; }
-function openParkingModal() { document.getElementById('parkingModal').style.display = 'flex'; }
-function closeParkingModal() { document.getElementById('parkingModal').style.display = 'none'; }
+// 汎用モーダル開閉関数
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'flex';
+    } else {
+        // Live Server 환경이 아닐 경우, fetch가 실패하여 modal이 존재하지 않을 수 있습니다.
+        console.error(`Modal with id "${modalId}" not found. Are you using a web server like Live Server?`);
+        alert('팝업을 여는 데 실패했습니다. Live Server와 같은 웹 서버 환경에서 실행하고 있는지 확인해주세요.');
+    }
+}
 
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+ 
 window.onclick = function(event) {
-    if (event.target == document.getElementById('accessModal')) closeModal();
-    if (event.target == document.getElementById('aiModal')) closeAiModal();
-    if (event.target == document.getElementById('parkingModal')) closeParkingModal();
+    if (event.target.classList.contains('modal-overlay')) {
+        event.target.style.display = 'none';
+    }
 };
 
 // Business status update logic
